@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Wannaplay</string>
+    <string name="slogan">Procurando uma galera para fazer um som? Deixa que o Wannaplau te ajuda!</string>
+    <string name="copyright">Copyright CRUDZERA Group</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_preferences">Preferências</string>
+    <string name="menu_messages">Mensagens</string>
+    <string name="menu_profile">Perfil</string>
+    <string name="title_home">Home</string>
+    <string name="title_preferences">PREFERÊNCIAS</string>
+    <string name="title_messages">Mensagens</string>
+    <string name="title_profile">Perfil</string>
+    <string name="empty_home">Não foram encontrados resultados! \nExperimente alterar suas preferências.</string>
+    <string name="lf_preferences">Estou procurando por:</string>
+    <string name="distance_preferences">Distância:</string>
+    <string name="age_preferences">Idade:</string>
+</resources>

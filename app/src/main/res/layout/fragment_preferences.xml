@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundColor">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/title_preferences"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="#2F80ED" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/lf_preferences"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="110dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/singer_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/singer_icon"/>
+
+        <CheckBox
+            android:id="@+id/guitar_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:button="@drawable/guitar_icon"/>
+
+        <CheckBox
+            android:id="@+id/bass_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:button="@drawable/bass_icon"/>
+
+        <CheckBox
+        android:id="@+id/drum_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:button="@drawable/drum_icon"/>
+
+        <CheckBox
+            android:id="@+id/other_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:button="@drawable/other_icon"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="409dp"
+        android:layout_height="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="170dp"
+        android:background="@drawable/divider" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/distance_preferences"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/lbl_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
+        android:layout_marginStart="105dp"
+        android:text="0"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/lbl_distance_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
+        android:layout_marginStart="120dp"
+        android:text="km"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"/>
+
+    <SeekBar
+        android:id="@+id/distance_seekbar"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="234dp"
+        android:thumb="@drawable/thumb_circle"
+        android:progressBackgroundTint="@color/textColor"/>
+
+    <ImageView
+        android:layout_width="409dp"
+        android:layout_height="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="270dp"
+        android:background="@drawable/divider" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="290dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/age_preferences"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/lbl_age_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="290dp"
+        android:layout_marginStart="75dp"
+        android:text="18"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/lbl_age_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="290dp"
+        android:layout_marginStart="110dp"
+        android:text="50"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/lbl_age_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="290dp"
+        android:layout_marginStart="100dp"
+        android:text="-"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"/>
+
+    <com.innovattic.rangeseekbar.RangeSeekBar
+        android:id="@+id/age_seekbar"
+        android:layout_width="386dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="325dp"
+        android:layout_marginBottom="240dp"
+        app:rsb_maxThumbDrawable="@drawable/thumb_circle"
+        app:rsb_minThumbDrawable="@drawable/thumb_circle"
+        app:rsb_trackColor="#4C4C4C"
+        app:rsb_trackSelectedColor="@color/colorAccent" />
+
+</RelativeLayout>

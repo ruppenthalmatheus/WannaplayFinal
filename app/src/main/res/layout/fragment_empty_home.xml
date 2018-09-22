@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_background"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:replace="android:theme">
+
+    <ImageView
+        android:id="@+id/wannaplayTitle"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="17dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/wannaplay_typography"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="34dp" />
+
+    <ImageView
+        android:id="@+id/stage_icon"
+        android:layout_width="224dp"
+        android:layout_height="175dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="159dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/stage_icon"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="34dp" />
+
+    <TextView
+        android:id="@+id/empty_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="280dp"
+        android:text="@string/empty_home"
+        android:textAlignment="center"
+        android:textColor="#2F80ED"
+        android:fontFamily="sans-serif-light"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnPreferences"
+        android:layout_width="268dp"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="167dp"
+        android:background="@drawable/btn_ripple_preferences"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
