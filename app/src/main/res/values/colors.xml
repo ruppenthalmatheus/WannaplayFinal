@@ -3,7 +3,10 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#1F1F1F</color>
     <color name="colorAccent">#2F80ED</color>
-    <color name="colorComponentsNavBar">#FFFFFF</color>
     <color name="backgroundColor">#151515</color>
     <color name="textColor">#E6E6E6</color>
+    <color name="DisabledColor">#828282</color>
+    <color name="DisabledSwitchThumbColor">#E0E0E0</color>
+    <color name="EnabledSwitchTrackColor">#2C416E</color>
+
 </resources>

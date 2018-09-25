@@ -14,4 +14,8 @@
     <string name="lf_preferences">Estou procurando por:</string>
     <string name="distance_preferences">Distância:</string>
     <string name="age_preferences">Idade:</string>
+    <string name="notifications_preferences">Notificações:</string>
+    <string name="new_members">Novos integrantes na sua região</string>
+    <string name="new_messages">Novas mensagens</string>
+    <string name="divider_description">Divisor de filtro</string>
 </resources>

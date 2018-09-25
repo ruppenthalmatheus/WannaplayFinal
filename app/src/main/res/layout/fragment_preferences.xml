@@ -1,181 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/backgroundColor">
+    android:background="@color/backgroundColor"
+    android:paddingTop="-5dp">
 
+    <!-- View Title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/title_preferences"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="#2F80ED" />
 
+    <!-- Filters -->
+
+    <!-- Abilities Filter-->
+
+    <!-- Label -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
         android:text="@string/lf_preferences"
         android:textColor="@color/textColor"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
-
+    <!-- Abilities Options -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="false"
-        android:layout_centerVertical="false"
         android:layout_marginTop="110dp"
         android:baselineAligned="false"
+        android:gravity="center_vertical|center_horizontal"
         android:orientation="horizontal">
 
+        <!-- Microphone Checkbox -->
         <CheckBox
             android:id="@+id/singer_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:button="@drawable/singer_icon"/>
+            android:layout_marginEnd="15dp"
+            android:button="@drawable/singer_icon" />
 
+        <!-- Guitar Checkbox -->
         <CheckBox
             android:id="@+id/guitar_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:button="@drawable/guitar_icon"/>
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:button="@drawable/guitar_icon" />
 
+        <!-- Bass Checkbox -->
         <CheckBox
             android:id="@+id/bass_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:button="@drawable/bass_icon"/>
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:button="@drawable/bass_icon" />
 
+        <!-- Drum Checkbox -->
         <CheckBox
-        android:id="@+id/drum_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:button="@drawable/drum_icon"/>
+            android:id="@+id/drum_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:button="@drawable/drum_icon" />
 
+        <!-- Others Checkbox -->
         <CheckBox
             android:id="@+id/other_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:button="@drawable/other_icon"/>
+            android:layout_marginStart="15dp"
+            android:button="@drawable/other_icon" />
 
     </LinearLayout>
 
+    <!-- First Divider -->
     <ImageView
         android:layout_width="409dp"
         android:layout_height="2dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="170dp"
-        android:background="@drawable/divider" />
+        android:background="@drawable/divider"
+        android:contentDescription="@string/divider_description" />
 
+    <!-- Distance Filter -->
+
+    <!-- Label -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="190dp"
         android:text="@string/distance_preferences"
         android:textColor="@color/textColor"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
+    <!-- Distance -->
     <TextView
         android:id="@+id/lbl_distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
         android:layout_marginStart="105dp"
+        android:layout_marginTop="190dp"
+        android:fontFamily="sans-serif-light"
         android:text="0"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
+    <!-- Metric Unit Label -->
     <TextView
         android:id="@+id/lbl_distance_unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
         android:layout_marginStart="120dp"
+        android:layout_marginTop="190dp"
+        android:fontFamily="sans-serif-light"
         android:text="km"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
+    <!-- Distance SeekBar -->
     <SeekBar
         android:id="@+id/distance_seekbar"
-        android:layout_width="371dp"
+        android:layout_width="405dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="234dp"
-        android:thumb="@drawable/thumb_circle"
-        android:progressBackgroundTint="@color/textColor"/>
+        android:progressBackgroundTint="@color/EnabledSwitchTrackColor"
+        android:thumb="@drawable/thumb_circle" />
 
+    <!-- Second Divider -->
     <ImageView
         android:layout_width="409dp"
         android:layout_height="2dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="270dp"
-        android:background="@drawable/divider" />
+        android:background="@drawable/divider"
+        android:contentDescription="@string/divider_description" />
 
+
+    <!-- Age Filter -->
+
+    <!-- Label -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="290dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="290dp"
         android:text="@string/age_preferences"
         android:textColor="@color/textColor"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
+    <!-- Min Age Label -->
     <TextView
         android:id="@+id/lbl_age_min"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="290dp"
         android:layout_marginStart="75dp"
+        android:layout_marginTop="290dp"
+        android:fontFamily="sans-serif-light"
         android:text="18"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
+    <!-- Max Age Label -->
     <TextView
         android:id="@+id/lbl_age_max"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="290dp"
         android:layout_marginStart="110dp"
+        android:layout_marginTop="290dp"
+        android:fontFamily="sans-serif-light"
         android:text="50"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
+    <!-- Separator -->
     <TextView
         android:id="@+id/lbl_age_a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="290dp"
         android:layout_marginStart="100dp"
+        android:layout_marginTop="290dp"
+        android:fontFamily="sans-serif-light"
         android:text="-"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
+    <!-- Age RangeSeekBar -->
     <com.innovattic.rangeseekbar.RangeSeekBar
         android:id="@+id/age_seekbar"
-        android:layout_width="386dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="325dp"
         android:layout_marginBottom="240dp"
+        android:layout_marginTop="325dp"
         app:rsb_maxThumbDrawable="@drawable/thumb_circle"
         app:rsb_minThumbDrawable="@drawable/thumb_circle"
-        app:rsb_trackColor="#4C4C4C"
+        app:rsb_trackColor="#1d2029"
         app:rsb_trackSelectedColor="@color/colorAccent" />
+
+    <!-- Third Divider -->
+    <ImageView
+        android:layout_width="409dp"
+        android:layout_height="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="370dp"
+        android:background="@drawable/divider"
+        android:contentDescription="@string/divider_description" />
+
+    <!-- Notifications -->
+
+    <!-- Label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="390dp"
+        android:text="@string/notifications_preferences"
+        android:textColor="@color/textColor"
+        android:textSize="18sp" />
+
+    <!-- Switch New Members -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="420dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lbl_new_members"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/new_members"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
+
+            <Switch
+                android:id="@+id/switch_members"
+                style="@style/SwitchCompatStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="2dp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- Switch New Messages -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="445dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lbl_new_messages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/new_messages"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
+
+            <Switch
+                android:id="@+id/switch_messages"
+                style="@style/SwitchCompatStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="2dp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>
