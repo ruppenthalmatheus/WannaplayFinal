@@ -109,22 +109,23 @@
 
     <!-- Distance -->
     <TextView
-        android:id="@+id/lbl_distance"
-        android:layout_width="wrap_content"
+        android:id="@+id/txt_distance"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="105dp"
+        android:layout_marginStart="315dp"
         android:layout_marginTop="190dp"
         android:fontFamily="sans-serif-light"
-        android:text="0"
+        android:text="000"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:gravity="end"/>
 
     <!-- Metric Unit Label -->
     <TextView
-        android:id="@+id/lbl_distance_unit"
+        android:id="@+id/txt_distance_unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="360dp"
         android:layout_marginTop="190dp"
         android:fontFamily="sans-serif-light"
         android:text="km"
@@ -165,37 +166,40 @@
         android:textColor="@color/textColor"
         android:textSize="18sp" />
 
-    <!-- Min Age Label -->
+    <!-- Min Age TextView -->
     <TextView
-        android:id="@+id/lbl_age_min"
-        android:layout_width="wrap_content"
+        android:id="@+id/txt_min_age"
+        android:layout_width="25dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
+        android:layout_marginStart="315dp"
         android:layout_marginTop="290dp"
+        android:gravity="end"
         android:fontFamily="sans-serif-light"
-        android:text="18"
+        android:text="0"
         android:textColor="@color/colorAccent"
         android:textSize="18sp" />
 
     <!-- Max Age Label -->
     <TextView
-        android:id="@+id/lbl_age_max"
-        android:layout_width="wrap_content"
+        android:id="@+id/txt_max_age"
+        android:layout_width="25dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
+        android:layout_marginStart="360dp"
         android:layout_marginTop="290dp"
+        android:gravity="center"
         android:fontFamily="sans-serif-light"
-        android:text="50"
+        android:text="0"
         android:textColor="@color/colorAccent"
         android:textSize="18sp" />
 
     <!-- Separator -->
     <TextView
-        android:id="@+id/lbl_age_a"
-        android:layout_width="wrap_content"
+        android:id="@+id/txt_age_separator"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="342dp"
         android:layout_marginTop="290dp"
+        android:gravity="center"
         android:fontFamily="sans-serif-light"
         android:text="-"
         android:textColor="@color/colorAccent"
@@ -211,6 +215,8 @@
         android:layout_marginTop="325dp"
         app:rsb_maxThumbDrawable="@drawable/thumb_circle"
         app:rsb_minThumbDrawable="@drawable/thumb_circle"
+        app:rsb_minRange="1"
+        app:rsb_max="60"
         app:rsb_trackColor="#1d2029"
         app:rsb_trackSelectedColor="@color/colorAccent" />
 
