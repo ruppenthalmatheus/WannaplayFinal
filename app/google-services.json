@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "520295819677",
+    "firebase_url": "https://wannaplay-17b25.firebaseio.com",
+    "project_id": "wannaplay-17b25",
+    "storage_bucket": "wannaplay-17b25.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520295819677:android:45382bdb5e4cdaf2",
+        "android_client_info": {
+          "package_name": "com.example.matheus.wannaplay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520295819677-o6gc852q9rjqvt2qpln6csn4pl57dno4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.matheus.wannaplay",
+            "certificate_hash": "c01a77fb4d187beb3fc2128741bb3e7166480600"
+          }
+        },
+        {
+          "client_id": "520295819677-6rsltlamlsqai3q9frf6gn29qkkurs5k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmj3etYFB8ZEhNIwIDnbl0Cu6c85ixLn4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520295819677-6rsltlamlsqai3q9frf6gn29qkkurs5k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
