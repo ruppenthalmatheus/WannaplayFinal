@@ -18,4 +18,6 @@
     <string name="new_members">Novos integrantes na sua região</string>
     <string name="new_messages">Novas mensagens</string>
     <string name="divider_description">Divisor de filtro</string>
+    <string name="facebook_app_id">2205070229714402</string>
+    <string name="fb_login_protocol_scheme">fb2205070229714402</string>
 </resources>
