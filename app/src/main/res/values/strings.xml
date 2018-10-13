@@ -15,6 +15,11 @@
     <string name="distance_preferences">Distância:</string>
     <string name="age_preferences">Idade:</string>
     <string name="notifications_preferences">Notificações:</string>
+    <string name="register_message">Seja bem-vindo(a), seu perfil está quase pronto!\nPrecisamos apenas de mais algumas informações.</string>
+    <string name="abilities_register">Suas habilidades musicais são:</string>
+    <string name="birth_register">Data de nascimento:</string>
+    <string name="birth_pick_register">Clique para selecionar</string>
+    <string name="birth_desc_register">No Wannaplay os músicos podem ser filtrados por idade!</string>
     <string name="new_members">Novos integrantes na sua região</string>
     <string name="new_messages">Novas mensagens</string>
     <string name="divider_description">Divisor de filtro</string>

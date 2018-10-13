@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
                 String loggedName = authResult.getUser().getDisplayName();
-                Intent intent = new Intent (getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent (getApplicationContext(), RegisterActivity.class);
                 finish();
                 startActivity(intent);
                 Toast.makeText(LoginActivity.this, "Olá " + loggedName + "!", Toast.LENGTH_SHORT).show();
