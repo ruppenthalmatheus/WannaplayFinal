@@ -23,6 +23,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
 
@@ -43,16 +44,33 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth = firebaseAuth.getInstance();
         callbackManager = CallbackManager.Factory.create();
 
-        Button loginButton = (Button) findViewById(R.id.login_button);
+        loginButton = (Button) findViewById(R.id.login_button);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email","public_profile"));
-                signInWithFacebook();
-            }
-        });
+        //Checks if there is a user already logged in
+        if (userIsLogged()) {
+            Intent intent = new Intent (LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            loginButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email","public_profile"));
+                    signInWithFacebook();
+                }
+            });
+        }
 
+    }
+
+    //Validates if there is a usar already logged in
+    public Boolean userIsLogged() {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private void signInWithFacebook() {
