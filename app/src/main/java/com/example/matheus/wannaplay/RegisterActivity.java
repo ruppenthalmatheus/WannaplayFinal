@@ -12,14 +12,13 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private TextView welcomeMessage;
     private TextView displayDate;
     private DatePickerDialog datePickerDialog;
     private FirebaseAuth firebaseAuth;
-    private Button finishButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +26,18 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         firebaseAuth = firebaseAuth.getInstance();
+        Button finishButton = findViewById(R.id.registerFinishBtn);
+
+        if (Locale.getDefault().getDisplayLanguage().equals("português")) {
+            finishButton.setBackgroundResource(R.drawable.btn_finish_br);
+        }
 
         String userName = firebaseAuth.getCurrentUser().getDisplayName();
         String userFirstName = userName.substring(0, userName.indexOf(" "));
 
-        welcomeMessage = findViewById(R.id.welcome_message);
-        welcomeMessage.setText("Olá " + userFirstName + "!");
+        TextView welcomeMessage = findViewById(R.id.welcome_message);
+        welcomeMessage.setText(getResources().getString(R.string.registerHello) + " " + userFirstName + "!");
 
-        finishButton = findViewById(R.id.finish_button);
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

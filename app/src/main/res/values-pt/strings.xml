@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wannaplay</string>
+    <string name="preferencesTitle">PREFERÊNCIAS</string>
+    <string name="messagesTitle">MENSAGENS</string>
+    <string name="profileTitle">PERFIL</string>
+    <string name="loginSloganTxt">Procurando uma galera para fazer um som? Deixa que o Wannaplay te ajuda!</string>
+    <string name="loginLoginBtn">Efetuar login com o Facebook</string>
+    <string name="loginCopyrightImg">Copyright CRUDZERA Group</string>
+    <string name="registerHello">Olá</string>
+    <string name="registerMessage1">Bem-vindo(a), seu perfil está quase pronto!</string>
+    <string name="registerMessage2">Precisamos apenas de mais algumas informações.</string>
+    <string name="registerHabilities">Suas habilidades musicais são:</string>
+    <string name="registerBirth">Você nasceu em:</string>
+    <string name="registerBirthPicker">Clique para selecionar sua data de nascimento</string>
+    <string name="registerBirthDescription">No Wannaplay você pode filtrar músicos pela idade.</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_preferences">Preferências</string>
+    <string name="menu_messages">Mensagens</string>
+    <string name="menu_profile">Perfil</string>
+    <string name="homeTitle">Há músicos na sua área!</string>
+    <string name="homeStageImg">Imagem de um palco vazio</string>
+    <string name="homeFilterResultTxt1">Não foram encontrados resultados!</string>
+    <string name="homeFilterResultTxt2">Altere suas preferências.</string>
+    <string name="homePreferencesBtn">Botão para alterar suas preferências</string>
+    <string name="lf_preferences">Estou procurando por:</string>
+    <string name="distance_preferences">Distância:</string>
+    <string name="age_preferences">Idade:</string>
+    <string name="new_members">Novos músicos na sua região</string>
+    <string name="new_messages">Novas mensagens</string>
+    <string name="divider_description">Linha divisória</string>
+    <string name="notifications_preferences">Notificações:</string>
+</resources>

@@ -1,28 +1,54 @@
 <resources>
     <string name="app_name">Wannaplay</string>
-    <string name="slogan">Procurando uma galera para fazer um som? Deixa que o Wannaplau te ajuda!</string>
-    <string name="copyright">Copyright CRUDZERA Group</string>
+
+
+    <string name="preferencesTitle">PREFERENCES</string>
+    <string name="messagesTitle">MESSAGES</string>
+    <string name="profileTitle">PROFILE</string>
+
+    <!--- LOGIN SCREEN -->
+
+    <string name="loginSloganTxt">Looking for a band to make some noise? Let Wannaplay help you!</string>
+    <string name="loginLoginBtn">Sign in with Facebook</string>
+    <string name="loginCopyrightImg">Copyright CRUDZERA Group</string>
+
+    <!--- FIRST LOGIN SCREEN -->
+
+    <string name="registerHello">Hello</string>
+    <string name="registerMessage1">Welcome, your profile is almost ready!</string>
+    <string name="registerMessage2">We just need some more information.</string>
+    <string name="registerHabilities">Your musical skills are:</string>
+    <string name="registerBirth">You were born in:</string>
+    <string name="registerBirthPicker">Click to select your date of birth</string>
+    <string name="registerBirthDescription">In Wannaplay you can filter musicians by age.</string>
+
+    <!--- MENU -->
+
     <string name="menu_home">Home</string>
-    <string name="menu_preferences">Preferências</string>
-    <string name="menu_messages">Mensagens</string>
-    <string name="menu_profile">Perfil</string>
-    <string name="title_home">Home</string>
-    <string name="title_preferences">PREFERÊNCIAS</string>
-    <string name="title_messages">Mensagens</string>
-    <string name="title_profile">Perfil</string>
-    <string name="empty_home">Não foram encontrados resultados! \nExperimente alterar suas preferências.</string>
-    <string name="lf_preferences">Estou procurando por:</string>
-    <string name="distance_preferences">Distância:</string>
-    <string name="age_preferences">Idade:</string>
-    <string name="notifications_preferences">Notificações:</string>
-    <string name="register_message">Seja bem-vindo(a), seu perfil está quase pronto!\nPrecisamos apenas de mais algumas informações.</string>
-    <string name="abilities_register">Suas habilidades musicais são:</string>
-    <string name="birth_register">Data de nascimento:</string>
-    <string name="birth_pick_register">Clique para selecionar</string>
-    <string name="birth_desc_register">No Wannaplay os músicos podem ser filtrados por idade!</string>
-    <string name="new_members">Novos integrantes na sua região</string>
-    <string name="new_messages">Novas mensagens</string>
-    <string name="divider_description">Divisor de filtro</string>
-    <string name="facebook_app_id">2205070229714402</string>
-    <string name="fb_login_protocol_scheme">fb2205070229714402</string>
+    <string name="menu_preferences">Preferences</string>
+    <string name="menu_messages">Messages</string>
+    <string name="menu_profile">Profile</string>
+
+    <!--- HOME SCREEN -->
+
+    <string name="homeTitle">There are musicians in your area!</string>
+    <string name="homeStageImg">Picture of an empty stage</string>
+    <string name="homeFilterResultTxt1">No results were found!</string>
+    <string name="homeFilterResultTxt2">Change your preferences.</string>
+    <string name="homePreferencesBtn">Button to change your preferences</string>
+
+    <!--- PREFERENCES SCREEN -->
+
+    <string name="lf_preferences">I\'m looking for:</string>
+    <string name="distance_preferences">Distance:</string>
+    <string name="age_preferences">Age:</string>
+    <string name="new_members">New musicians in your area</string>
+    <string name="new_messages">New messages</string>
+    <string name="divider_description">Dividing line</string>
+
+    <!--- FACEBOOK ID's -->
+
+    <string name="facebook_app_id" translatable="false">2205070229714402</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb2205070229714402</string>
+    <string name="notifications_preferences">Notifications:</string>
 </resources>

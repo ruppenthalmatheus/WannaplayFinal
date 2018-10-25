@@ -7,12 +7,27 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
+
+    Button preferencesButton;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_empty_home, null);
+
+        //Turns the fragment_preferences layout into a View
+        View homeView = inflater.inflate(R.layout.fragment_empty_home, container, false);
+
+        preferencesButton = homeView.findViewById(R.id.homePreferencesBtn);
+
+        if (Locale.getDefault().getDisplayLanguage().equals("português")) {
+            preferencesButton.setBackgroundResource(R.drawable.btn_preferences_br);
+        }
+
+        return homeView;
     }
 }

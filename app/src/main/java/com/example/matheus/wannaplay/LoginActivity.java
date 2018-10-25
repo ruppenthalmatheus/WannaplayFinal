@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -16,7 +19,6 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthCredential;
@@ -26,14 +28,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private CallbackManager callbackManager;
 
-    Button loginButton;
-
+    Button loginFacebookBtn;
+    ImageView loginSloganImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +44,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        firebaseAuth = firebaseAuth.getInstance();
-        callbackManager = CallbackManager.Factory.create();
+        loginSloganImg = findViewById(R.id.loginSloganImg);
+        loginFacebookBtn = findViewById(R.id.loginLoginBtn);
 
-        loginButton = (Button) findViewById(R.id.login_button);
+        if (Locale.getDefault().getDisplayLanguage().equals("português")) {
+            loginSloganImg.setImageResource(R.drawable.slogan);
+            loginFacebookBtn.setBackgroundResource(R.drawable.btn_facebook);
+        }
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        callbackManager = CallbackManager.Factory.create();
 
         //Checks if there is a user already logged in
         if (userIsLogged()) {
@@ -52,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } else {
-            loginButton.setOnClickListener(new View.OnClickListener() {
+            loginFacebookBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email","public_profile"));

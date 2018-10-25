@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:fontFamily="sans-serif-light"
-        android:text="@string/title_preferences"
+        android:text="@string/preferencesTitle"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="#2F80ED" />
 

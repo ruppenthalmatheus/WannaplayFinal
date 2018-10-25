@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/home_background"
@@ -7,54 +8,85 @@
     tools:replace="android:theme">
 
     <ImageView
-        android:id="@+id/wannaplayTitle"
+        android:id="@+id/homeViewTitle"
         android:layout_width="130dp"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/wannaplay_typography"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="34dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/stage_icon"
-        android:layout_width="224dp"
+        android:id="@+id/homeStageImg"
+        android:layout_width="219dp"
         android:layout_height="175dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="159dp"
-        android:contentDescription="@string/app_name"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/homeStageImg"
         android:src="@drawable/stage_icon"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="34dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeViewTitle" />
 
     <TextView
-        android:id="@+id/empty_home"
+        android:id="@+id/homeFilterResultTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="350dp"
         android:layout_centerHorizontal="true"
-        android:text="@string/empty_home"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/homeFilterResultTxt1"
         android:textAlignment="center"
         android:textColor="#2F80ED"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeStageImg" />
+
+    <TextView
+        android:id="@+id/homeFilterResultTxt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-light"
-        android:textSize="18sp" />
+        android:text="@string/homeFilterResultTxt2"
+        android:textAlignment="center"
+        android:textColor="#2F80ED"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeFilterResultTxt" />
 
     <Button
-        android:id="@+id/btnPreferences"
+        android:id="@+id/homePreferencesBtn"
         android:layout_width="268dp"
         android:layout_height="49dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/btn_ripple_preferences"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeFilterResultTxt" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

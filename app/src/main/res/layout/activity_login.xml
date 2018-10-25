@@ -1,56 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context=".LoginActivity">
 
     <ImageView
-        android:id="@+id/mainLogo"
-        android:layout_width="286dp"
-        android:layout_height="314dp"
+        android:id="@+id/loginLogoImg"
+        android:layout_width="0dp"
+        android:layout_height="299dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/wannaplay_logo" />
+        android:src="@drawable/wannaplay_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/slogan"
+        android:id="@+id/loginSloganImg"
         android:layout_width="350dp"
         android:layout_height="64dp"
-        android:contentDescription="@string/slogan"
-        android:src="@drawable/slogan" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/loginSloganTxt"
+        android:src="@drawable/slogan_en"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginLogoImg" />
 
     <Button
-        android:id="@+id/login_button"
-        android:layout_width="320dp"
+        android:id="@+id/loginLoginBtn"
+        android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="45dp"
         android:background="@drawable/btn_signin_facebook"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
-        android:textStyle="bold" />
-
-    <!---
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="8dp"
-        android:background="@drawable/btn_facebook"
-        android:textSize="18sp" />-->
-
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginSloganImg" />
 
     <ImageView
-        android:id="@+id/copy"
+        android:id="@+id/loginCopyrightImg"
         android:layout_width="163dp"
         android:layout_height="46dp"
-        android:layout_marginTop="130dp"
-        android:contentDescription="@string/copyright"
-        android:src="@drawable/copyright" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/loginCopyrightImg"
+        android:src="@drawable/copyright"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
