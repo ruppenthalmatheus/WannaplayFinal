@@ -24,6 +24,7 @@ public class HomeFragment extends Fragment {
 
         preferencesButton = homeView.findViewById(R.id.homePreferencesBtn);
 
+        //Changes the Preferences Button background if the device language is Portuguese
         if (Locale.getDefault().getDisplayLanguage().equals("português")) {
             preferencesButton.setBackgroundResource(R.drawable.btn_preferences_br);
         }
