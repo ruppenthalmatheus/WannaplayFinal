@@ -21,6 +21,16 @@
     <string name="registerBirth">You were born in:</string>
     <string name="registerBirthPicker">Click to select your date of birth</string>
     <string name="registerBirthDescription">In Wannaplay you can filter musicians by age.</string>
+    <string name="registerRequiredBirthMessage">Enter your date of birth.</string>
+
+    <!--- PERMISSION DIALOG -->
+
+    <string name="dialogTitle">Permission needed</string>
+    <string name="dialogGrant">Grant</string>
+    <string name="dialogDeny">Deny</string>
+    <string name="dialogMessage">Location is necessary to find musicians close to you and allow other musicians to find you.</string>
+    <string name="permissionGranted">Permission granted!</string>
+    <string name="permissionDenied">Permission denied!</string>
 
     <!--- MENU -->
 
@@ -39,16 +49,48 @@
 
     <!--- PREFERENCES SCREEN -->
 
-    <string name="lf_preferences">I\'m looking for:</string>
-    <string name="distance_preferences">Distance:</string>
-    <string name="age_preferences">Age:</string>
-    <string name="new_members">New musicians in your area</string>
-    <string name="new_messages">New messages</string>
-    <string name="divider_description">Dividing line</string>
+    <string name="preferencesLookingForTxt">I\'m looking for:</string>
+    <string name="preferencesDistanceLabelTxt">Distance:</string>
+    <string name="preferencesAgeLabelTxt">Age:</string>
+    <string name="profileNewMembersTxt">New musicians in your area</string>
+    <string name="profileNewMessagesTxt">New messages</string>
+
+    <!--- PROFILE SCREEN -->
+
+    <string name="profileHeaderBackground">User profile header with a background image</string>
+    <string name="profileHeaderTransparency">Blue color with transparency on top of the background image</string>
+    <string name="profileHeaderPicture">Picture of the user</string>
+    <string name="profileHeaderNameTxt">Name of the user</string>
+    <string name="profileHabilitiesTxt">My musical skills:</string>
+    <string name="profileSingerBtn">Singer hability toggle button</string>
+    <string name="profileGuitarBtn">Guitar hability toggle button</string>
+    <string name="profileBassBtn">Bass hability toggle button</string>
+    <string name="profileDrumBtn">Drum hability toggle button</string>
+    <string name="profileOtherBtn">Other habilities toggle button</string>
+    <string name="profileAboutLabelTxt">About me:</string>
+    <string name="profileAboutTxt">A short description about me...</string>
+    <string name="profileLinkedAccountsLabelTxt">Linked Accounts:</string>
+    <string name="profileSpotifyImg">Spotify Icon</string>
+    <string name="profileSpotifyTxt" translatable="false">Spotify</string>
+    <string name="profileSpotifySwitch">Turn on Spotify switch</string>
+    <string name="profileMaxCharactersLabel">Max: 200</string>
+    <string name="profileMaxCharacters">200 character maximum text</string>
+
+    <!--- MUSICIAN PROFILE SCREEN -->
+
+    <string name="musicianHeaderBackground">Musician profile header with a background image</string>
+    <string name="musicianHeaderTransparency">Blue color with transparency on top of the background image</string>
+    <string name="musicianHeaderPicture">Picture of the musician</string>
+    <string name="musicianHeaderNameTxt">Name of the musician</string>
+    <string name="musicianMessageBtn">Send message</string>
+    <string name="musicianAboutLabelTxt">About the musician</string>
+    <string name="musicianAboutTxt">A short description about the musician</string>
+    <string name="musicianSpotifyBands">Bands liked on Spotify</string>
 
     <!--- FACEBOOK ID's -->
 
     <string name="facebook_app_id" translatable="false">2205070229714402</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb2205070229714402</string>
     <string name="notifications_preferences">Notifications:</string>
+    <string name="profileDivider">Dividing line</string>
 </resources>

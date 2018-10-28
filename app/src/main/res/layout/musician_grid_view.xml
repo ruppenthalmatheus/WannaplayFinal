@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/gridViewMusicianPic"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profile_pic_2" />
+
+    <ImageView
+        android:id="@+id/gridViewMusicianDataBackground"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="@+id/gridViewMusicianPic"
+        app:layout_constraintStart_toStartOf="@+id/gridViewMusicianPic"
+        app:layout_constraintTop_toBottomOf="@+id/gridViewMusicianPic"
+        app:srcCompat="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/gridViewMusicianName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/gridViewMusicianDataBackground"
+        app:layout_constraintTop_toTopOf="@+id/gridViewMusicianDataBackground"
+        tools:text="Shinoda" />
+
+    <ImageView
+        android:id="@+id/gridViewMusicianLocation"
+        android:layout_width="12dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gridViewMusicianDataBackground"
+        app:layout_constraintStart_toStartOf="@+id/gridViewMusicianDataBackground"
+        app:layout_constraintTop_toBottomOf="@+id/gridViewMusicianName"
+        app:srcCompat="@drawable/ic_pin" />
+
+    <TextView
+        android:id="@+id/gridViewPinIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textColor="@color/EnabledSwitchTrackColor"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/gridViewMusicianLocation"
+        app:layout_constraintStart_toEndOf="@+id/gridViewMusicianLocation"
+        app:layout_constraintTop_toTopOf="@+id/gridViewMusicianLocation"
+        tools:text="Torres - 2 km" />
+
+    <ImageView
+        android:id="@+id/gridViewMoreIcon"
+        android:layout_width="12dp"
+        android:layout_height="13dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gridViewPinIcon"
+        app:layout_constraintEnd_toEndOf="@+id/gridViewMusicianDataBackground"
+        app:layout_constraintTop_toTopOf="@+id/gridViewPinIcon"
+        app:srcCompat="@drawable/ic_more" />
+
+</android.support.constraint.ConstraintLayout>

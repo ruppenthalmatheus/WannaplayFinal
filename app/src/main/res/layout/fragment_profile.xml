@@ -1,13 +1,331 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_background">
+
+    <!-- View Title -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/profileTitle"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="#2F80ED"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- HEADER -->
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/musicianConstraintHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+
+        <!-- BACKGROUND PROFILE PIC -->
+
+        <ImageView
+            android:id="@+id/musicianHeaderBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:contentDescription="@string/profileHeaderBackground"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/profile_pic_2" />
+
+        <!-- BLUE BACKGROUND LAYER -->
+
+        <ImageView
+            android:id="@+id/profileHeaderTransparency"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/profileHeaderTransparency"
+            app:layout_constraintBottom_toBottomOf="@+id/musicianHeaderBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/colorAccent" />
+
+        <!-- PROFILE PIC -->
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="130dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/profileHeaderPicture"
+            android:elevation="4dp"
+            android:src="@drawable/profile_pic_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- PROFILE NAME -->
+
+        <TextView
+            android:id="@+id/profileNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/profileHeaderNameTxt"
+            android:text="Shinoda"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Shinoda" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- HABILITIES -->
 
     <TextView
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="PROFILE"
+        android:id="@+id/profileHabilitiesTxt"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="22dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/profileHabilitiesTxt"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/musicianConstraintHeader" />
 
-</RelativeLayout>
+    <!-- Abilities Options -->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/profileHabilitiesConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:baselineAligned="false"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileHabilitiesTxt">
+
+        <!-- Microphone Checkbox -->
+        <CheckBox
+            android:id="@+id/profileVocalCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="15dp"
+            android:button="@drawable/singer_icon"
+            android:contentDescription="@string/profileSingerBtn"
+            app:layout_constraintEnd_toStartOf="@+id/profileGuitarCheckbox"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Guitar Checkbox -->
+        <CheckBox
+            android:id="@+id/profileGuitarCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:button="@drawable/guitar_icon"
+            android:contentDescription="@string/profileGuitarBtn"
+            app:layout_constraintEnd_toStartOf="@+id/profileBassCheckbox"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profileVocalCheckbox" />
+
+        <!-- Bass Checkbox -->
+        <CheckBox
+            android:id="@+id/profileBassCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:button="@drawable/bass_icon"
+            android:contentDescription="@string/profileBassBtn"
+            app:layout_constraintEnd_toStartOf="@+id/profileDrumCheckbox"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profileGuitarCheckbox" />
+
+        <!-- Drum Checkbox -->
+        <CheckBox
+            android:id="@+id/profileDrumCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:button="@drawable/drum_icon"
+            android:contentDescription="@string/profileDrumBtn"
+            app:layout_constraintEnd_toStartOf="@+id/profileOtherCheckbox"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profileBassCheckbox" />
+
+        <!-- Others Checkbox -->
+        <CheckBox
+            android:id="@+id/profileOtherCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="30dp"
+            android:button="@drawable/other_icon"
+            android:contentDescription="@string/profileOtherBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/profileDrumCheckbox" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- DIVIDER ABOUT ME-->
+
+    <ImageView
+        android:id="@+id/profileDivider1"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/divider"
+        android:contentDescription="@string/profileDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileHabilitiesConstraint" />
+
+    <!-- DIVIDER ACCOUNTS -->
+
+    <ImageView
+        android:id="@+id/profileDivider2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/divider"
+        android:contentDescription="@string/profileDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileMaxCharactersTxt" />
+
+    <!-- ABOUT ME -->
+
+    <TextView
+        android:id="@+id/profileAboutLabelTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/profileAboutLabelTxt"
+        android:text="@string/profileAboutLabelTxt"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileDivider1" />
+
+    <!-- DESCRIPTION FIELD -->
+
+    <EditText
+        android:id="@+id/profileAboutTxt"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/colorAccent"
+        android:fontFamily="sans-serif-light"
+        android:gravity="top|start"
+        android:hint="@string/profileAboutTxt"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:maxLength="200"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/DisabledColor"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileAboutLabelTxt" />
+
+    <!-- LINKED ACCOUNTS -->
+
+    <TextView
+        android:id="@+id/profileLinkedAccountsLabelTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/profileLinkedAccountsLabelTxt"
+        android:text="@string/profileLinkedAccountsLabelTxt"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileDivider2" />
+
+    <!-- SPOTIFY LINK -->
+
+    <ImageView
+        android:id="@+id/profileSpotifyImg"
+        android:layout_width="24dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/profileSpotifyImg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileLinkedAccountsLabelTxt"
+        app:srcCompat="@drawable/ic_spotify" />
+
+    <TextView
+        android:id="@+id/profileSpotifyTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/profileSpotifyTxt"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/profileSpotifyTxt"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/profileSpotifyImg"
+        app:layout_constraintStart_toEndOf="@+id/profileSpotifyImg"
+        app:layout_constraintTop_toTopOf="@+id/profileSpotifyImg" />
+
+    <Switch
+        android:id="@+id/profileSpotifySwitch"
+        style="@style/SwitchCompatStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/profileSpotifySwitch"
+        app:layout_constraintBottom_toBottomOf="@+id/profileSpotifyTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profileSpotifyTxt" />
+
+    <!-- MAX CHARACTERS LABEL -->
+
+    <TextView
+        android:id="@+id/profileMaxCharactersTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/profileMaxCharactersLabel"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileAboutTxt" />
+
+</android.support.constraint.ConstraintLayout>

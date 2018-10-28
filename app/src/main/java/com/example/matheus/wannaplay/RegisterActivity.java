@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
@@ -26,7 +25,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private TextView displayDate;
     private DatePickerDialog datePickerDialog;
-    private int STORAGE_PERMISSION_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         Button finishButton = findViewById(R.id.registerFinishBtn);
-
-        requestLocationPermission();
+        displayDate = findViewById(R.id.date_select);
 
         //Changes the Finish Button background if the device language is Portuguese
         if (Locale.getDefault().getDisplayLanguage().equals("português")) {
@@ -49,17 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         TextView welcomeMessage = findViewById(R.id.welcome_message);
         welcomeMessage.setText(getResources().getString(R.string.registerHello) + " " + userFirstName + "!");
 
-        finishButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                finish();
-                startActivity(intent);
-            }
-        });
-
-
-        displayDate = findViewById(R.id.date_select);
+        //DatePickerDialog Config
         displayDate.setOnClickListener(new View.OnClickListener() {
 
             int day;
@@ -83,45 +70,21 @@ public class RegisterActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-    }
 
-    private void requestLocationPermission() {
-        if (ContextCompat.checkSelfPermission(RegisterActivity.this,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(RegisterActivity.this, "Permission already granted!", Toast.LENGTH_SHORT).show();
-        } else {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Permission needed")
-                        .setMessage("Your location is necessary to find musicians close to you and allow other musicians to find you.")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                ActivityCompat.requestPermissions(RegisterActivity.this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, STORAGE_PERMISSION_CODE);
-                            }
-                        })
-                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        })
-                        .create().show();
-            } else {
-                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, STORAGE_PERMISSION_CODE);
+        //Finish Button Config
+        finishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (displayDate.getText().toString().equals("")) {
+                    Toast.makeText(RegisterActivity.this, getResources().getString(R.string.registerRequiredBirthMessage), Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    finish();
+                    startActivity(intent);
+                }
             }
-        }
-    }
+        });
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == STORAGE_PERMISSION_CODE)  {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Permission GRANTED", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 
 }

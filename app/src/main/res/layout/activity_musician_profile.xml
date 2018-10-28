@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_background"
+    tools:context=".MusicianProfileActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <!-- MUSICIAN NAME TITLE -->
+
+    <ImageButton
+        android:id="@+id/musicianBackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/musicianNameTxt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/musicianNameTxt"
+        app:srcCompat="@drawable/back_icon" />
+
+    <TextView
+        android:id="@+id/musicianNameTxt"
+        android:layout_width="387dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/musicianHeaderNameTxt"
+        android:fontFamily="sans-serif-light"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="#2F80ED"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Shinoda" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/musicianConstraintHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/musicianNameTxt">
+
+
+        <!-- BACKGROUND PROFILE PIC -->
+
+        <ImageView
+            android:id="@+id/musicianHeaderBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:contentDescription="@string/profileHeaderBackground"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/profile_pic_2" />
+
+        <!-- BLUE BACKGROUND LAYER -->
+
+        <ImageView
+            android:id="@+id/musicianHeaderTransparency"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/profileHeaderTransparency"
+            app:layout_constraintBottom_toBottomOf="@+id/musicianHeaderBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@color/colorAccent" />
+
+        <!-- PROFILE PIC -->
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/musicianProfileImg"
+            android:layout_width="130dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/profileHeaderPicture"
+            android:elevation="4dp"
+            android:src="@drawable/profile_pic_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/musicianSendMessageBtn"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="#6FCF97"
+            android:contentDescription="@string/musicianMessageBtn"
+            android:drawableStart="@drawable/messages_icon"
+            android:elevation="4dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="10dp"
+            android:text="@string/musicianMessageBtn"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/musicianHeaderTransparency"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- PROFILE NAME -->
+
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/musicianAboutLabelTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/musicianAboutLabelTxt"
+        android:text="TextView"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/musicianConstraintHeader"
+        tools:text="About Shinoda:" />
+
+    <EditText
+        android:id="@+id/musicianAboutTxt"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/colorAccent"
+        android:contentDescription="@string/musicianAboutTxt"
+        android:fontFamily="sans-serif-light"
+        android:gravity="top|start"
+        android:hint="@string/profileAboutTxt"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:maxLength="200"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/DisabledColor"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/musicianAboutLabelTxt" />
+
+    <!-- DIVIDER ABOUT ME-->
+
+    <ImageView
+        android:id="@+id/musicianDivider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/divider"
+        android:contentDescription="@string/profileDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/musicianAboutTxt" />
+
+    <TextView
+        android:id="@+id/musicianBandsTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/musicianSpotifyBands"
+        android:text="@string/musicianSpotifyBands"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/musicianDivider" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/preferencesTitle"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -25,9 +25,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="70dp"
-        android:text="@string/lf_preferences"
+        android:text="@string/preferencesLookingForTxt"
         android:textColor="@color/textColor"
         android:textSize="18sp" />
 
@@ -42,7 +42,7 @@
 
         <!-- Microphone Checkbox -->
         <CheckBox
-            android:id="@+id/singer_checkbox"
+            android:id="@+id/profileVocalCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
@@ -50,7 +50,7 @@
 
         <!-- Guitar Checkbox -->
         <CheckBox
-            android:id="@+id/guitar_checkbox"
+            android:id="@+id/profileGuitarCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
@@ -59,7 +59,7 @@
 
         <!-- Bass Checkbox -->
         <CheckBox
-            android:id="@+id/bass_checkbox"
+            android:id="@+id/profileBassCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
@@ -68,7 +68,7 @@
 
         <!-- Drum Checkbox -->
         <CheckBox
-            android:id="@+id/drum_checkbox"
+            android:id="@+id/profileDrumCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
@@ -77,7 +77,7 @@
 
         <!-- Others Checkbox -->
         <CheckBox
-            android:id="@+id/other_checkbox"
+            android:id="@+id/profileOtherCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -93,7 +93,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="170dp"
         android:background="@drawable/divider"
-        android:contentDescription="@string/divider_description" />
+        android:contentDescription="@string/profileDivider" />
 
     <!-- Distance Filter -->
 
@@ -101,9 +101,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="190dp"
-        android:text="@string/distance_preferences"
+        android:text="@string/preferencesDistanceLabelTxt"
         android:textColor="@color/textColor"
         android:textSize="18sp" />
 
@@ -151,7 +151,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="270dp"
         android:background="@drawable/divider"
-        android:contentDescription="@string/divider_description" />
+        android:contentDescription="@string/profileDivider" />
 
 
     <!-- Age Filter -->
@@ -160,9 +160,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="290dp"
-        android:text="@string/age_preferences"
+        android:text="@string/preferencesAgeLabelTxt"
         android:textColor="@color/textColor"
         android:textSize="18sp" />
 
@@ -228,7 +228,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="370dp"
         android:background="@drawable/divider"
-        android:contentDescription="@string/divider_description" />
+        android:contentDescription="@string/profileDivider" />
 
     <!-- Notifications -->
 
@@ -236,7 +236,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="390dp"
         android:text="@string/notifications_preferences"
         android:textColor="@color/textColor"
@@ -246,7 +246,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="420dp"
         android:orientation="horizontal">
 
@@ -259,7 +259,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:text="@string/new_members"
+                android:text="@string/profileNewMembersTxt"
                 android:textColor="@color/textColor"
                 android:textSize="14sp" />
 
@@ -292,9 +292,9 @@
                 android:id="@+id/lbl_new_messages"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:fontFamily="sans-serif-light"
-                android:text="@string/new_messages"
+                android:text="@string/profileNewMessagesTxt"
                 android:textColor="@color/textColor"
                 android:textSize="14sp" />
 
