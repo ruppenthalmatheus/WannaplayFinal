@@ -64,7 +64,7 @@
 
         <!-- Microphone Checkbox -->
         <CheckBox
-            android:id="@+id/profileVocalCheckbox"
+            android:id="@+id/registerVocalCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
@@ -72,7 +72,7 @@
 
         <!-- Guitar Checkbox -->
         <CheckBox
-            android:id="@+id/profileGuitarCheckbox"
+            android:id="@+id/registerGuitarCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -81,7 +81,7 @@
 
         <!-- Bass Checkbox -->
         <CheckBox
-            android:id="@+id/profileBassCheckbox"
+            android:id="@+id/registerBassCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -90,7 +90,7 @@
 
         <!-- Drum Checkbox -->
         <CheckBox
-            android:id="@+id/profileDrumCheckbox"
+            android:id="@+id/registerDrumCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -99,7 +99,7 @@
 
         <!-- Others Checkbox -->
         <CheckBox
-            android:id="@+id/profileOtherCheckbox"
+            android:id="@+id/registerOtherCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
