@@ -1,37 +1,65 @@
 package com.example.matheus.wannaplay;
 
+
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
 import java.util.Locale;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
+    private String mMusicianName;
+    private String mMusicianPhotoUrl;
+    private int mMusicianAge;
+    private double mMusicianLatitude;
+    private double mMusicianLongitude;
+    private boolean mMusicianVocal;
+    private boolean mMusicianGuitar;
+    private boolean mMusicianBass;
+    private boolean mMusicianDrums;
+    private boolean mMusicianOthers;
     private TextView displayDate;
     private DatePickerDialog datePickerDialog;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private GoogleApiClient googleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
         Button finishButton = findViewById(R.id.registerFinishBtn);
         displayDate = findViewById(R.id.date_select);
 
@@ -87,4 +115,45 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(RegisterActivity.this, getResources().getString(R.string.dialogMessage), Toast.LENGTH_LONG).show();
+        } else {
+            fusedLocationProviderClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null) {
+                                mMusicianLatitude = location.getLatitude();
+                                mMusicianLongitude = location.getLongitude();
+                            }
+                        }
+                    });
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Log.e("RegisterActivity", "Connection suspended");
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.e("RegisterActivity", "Connection Failed: " + connectionResult.getErrorCode());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        googleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        if (googleApiClient.isConnected()) {
+            googleApiClient.disconnect();
+        }
+        super.onStop();
+    }
 }

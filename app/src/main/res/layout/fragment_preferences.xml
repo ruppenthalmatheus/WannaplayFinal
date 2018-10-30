@@ -42,7 +42,7 @@
 
         <!-- Microphone Checkbox -->
         <CheckBox
-            android:id="@+id/profileVocalCheckbox"
+            android:id="@+id/preferencesVocalCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
@@ -50,7 +50,7 @@
 
         <!-- Guitar Checkbox -->
         <CheckBox
-            android:id="@+id/profileGuitarCheckbox"
+            android:id="@+id/preferencesGuitarCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
@@ -59,7 +59,7 @@
 
         <!-- Bass Checkbox -->
         <CheckBox
-            android:id="@+id/profileBassCheckbox"
+            android:id="@+id/preferencesBassCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
@@ -68,7 +68,7 @@
 
         <!-- Drum Checkbox -->
         <CheckBox
-            android:id="@+id/profileDrumCheckbox"
+            android:id="@+id/preferencesDrumCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
@@ -77,7 +77,7 @@
 
         <!-- Others Checkbox -->
         <CheckBox
-            android:id="@+id/profileOtherCheckbox"
+            android:id="@+id/preferencesOtherCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -264,7 +264,7 @@
                 android:textSize="14sp" />
 
             <Switch
-                android:id="@+id/switch_members"
+                android:id="@+id/preferencesSwitchMusicians"
                 style="@style/SwitchCompatStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -299,7 +299,7 @@
                 android:textSize="14sp" />
 
             <Switch
-                android:id="@+id/switch_messages"
+                android:id="@+id/preferencesSwitchMessages"
                 style="@style/SwitchCompatStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
