@@ -37,14 +37,13 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private String mMusicianName;
     private String mMusicianPhotoUrl;
     private int mMusicianAge;
     private double mMusicianLatitude, mMusicianLongitude;
     private boolean mMusicianVocal, mMusicianGuitar, mMusicianBass, mMusicianDrums, mMusicianOthers;
     private Calendar calendar;
     private TextView displayDate;
-    private String userName;
+    private String userName, userKey;
     private CheckBox mVocalBtn, mGuitarBtn, mBassBtn, mDrumsBtn, mOthersBtn;
     private DatePickerDialog datePickerDialog;
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -80,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
         }
 
         userName = firebaseAuth.getCurrentUser().getDisplayName();
+        userKey = firebaseAuth.getCurrentUser().getUid();
         String userFirstName = userName.substring(0, userName.indexOf(" "));
 
         TextView welcomeMessage = findViewById(R.id.welcome_message);
@@ -156,47 +156,51 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
 
         Map<String, Object> musician = new HashMap<>();
         musician.put(t.getKEY_NAME(), userName);
+        musician.put(t.getKEY_ABOUT(), "");
         musician.put(t.getKEY_EMAIL(), firebaseAuth.getCurrentUser().getEmail());
-        musician.put(t.getKEY_PHOTO(), photoUrl);
+        musician.put(t.getKEY_PHOTO(), photoUrl+"?type=large");
         musician.put(t.getKEY_AGE(), 28);
         musician.put(t.getKEY_LATITUDE(), mMusicianLatitude);
         musician.put(t.getKEY_LONGITUDE(), mMusicianLongitude);
 
-        firebaseFirestore.collection(t.getKEY_MUSICIANS())
-                .add(musician)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        firebaseFirestore.collection(t.getKEY_MUSICIANS()).document(userKey)
+                .set(musician)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Map<String, Object> skills = new HashMap<>();
-                        skills.put(t.getKEY_VOCAL(), isVocalist);
-                        skills.put(t.getKEY_GUITAR(), isGuitarist);
-                        skills.put(t.getKEY_BASS(), isBassist);
-                        skills.put(t.getKEY_DRUMS(), isDrummer);
-                        skills.put(t.getKEY_OTHERS(), isOthers);
-
-                        documentReference.collection(t.getKEY_SKILLS())
-                                .add(skills)
-                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Log.d("OK", "Skills successfully added!");
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.w("ERROR", "Error adding the skills", e);
-                                    }
-                                });
-                        Log.d("OK", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    public void onSuccess(Void aVoid) {
+                        Log.d("OK", "DocumentSnapshot successfully written!");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w("ERROR", "Error adding document", e);
+                        Log.w("ERROR", "Error writing document", e);
                     }
                 });
+
+        Map<String, Object> skills = new HashMap<>();
+        skills.put(t.getKEY_VOCAL(), isVocalist);
+        skills.put(t.getKEY_GUITAR(), isGuitarist);
+        skills.put(t.getKEY_BASS(), isBassist);
+        skills.put(t.getKEY_DRUMS(), isDrummer);
+        skills.put(t.getKEY_OTHERS(), isOthers);
+
+        DocumentReference musicianReference = firebaseFirestore.collection(t.getKEY_MUSICIANS()).document(userKey);
+        musicianReference.
+                update(t.getKEY_SKILLS(), skills)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("OK", "Skills added succesfully!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("ERROR", "Error adding skills", e);
+                    }
+                });
+
     }
 
     @Override

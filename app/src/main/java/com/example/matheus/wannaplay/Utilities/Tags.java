@@ -8,6 +8,7 @@ public class Tags {
     private String KEY_PHOTO = "photoUrl";
     private String KEY_EMAIL = "email";
     private String KEY_AGE = "age";
+    private String KEY_ABOUT = "about";
     private String KEY_LATITUDE = "latitude";
     private String KEY_LONGITUDE = "longitude";
 
@@ -26,6 +27,10 @@ public class Tags {
 
     public String getKEY_NAME() {
         return KEY_NAME;
+    }
+
+    public String getKEY_ABOUT() {
+        return KEY_ABOUT;
     }
 
     public String getKEY_EMAIL() {

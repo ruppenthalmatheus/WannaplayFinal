@@ -13,7 +13,7 @@
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/profile_pic_2" />
+        app:srcCompat="@drawable/default_picture" />
 
     <ImageView
         android:id="@+id/gridViewMusicianDataBackground"

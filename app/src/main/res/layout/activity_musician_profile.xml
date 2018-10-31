@@ -41,7 +41,7 @@
         tools:text="Shinoda" />
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/musicianConstraintHeader"
+        android:id="@+id/profileConstraintHeader"
         android:layout_width="wrap_content"
         android:layout_height="160dp"
         android:layout_marginTop="8dp"
@@ -60,7 +60,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/profile_pic_2" />
+            app:srcCompat="@drawable/default_picture" />
 
         <!-- BLUE BACKGROUND LAYER -->
 
@@ -88,7 +88,7 @@
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/profileHeaderPicture"
             android:elevation="4dp"
-            android:src="@drawable/profile_pic_2"
+            android:src="@drawable/default_picture"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -125,7 +125,7 @@
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musicianConstraintHeader"
+        app:layout_constraintTop_toBottomOf="@+id/profileConstraintHeader"
         tools:text="About Shinoda:" />
 
     <EditText
