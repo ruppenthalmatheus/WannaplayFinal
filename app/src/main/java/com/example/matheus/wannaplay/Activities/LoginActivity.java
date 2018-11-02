@@ -1,4 +1,4 @@
-package com.example.matheus.wannaplay;
+package com.example.matheus.wannaplay.Activities;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -17,11 +17,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.matheus.wannaplay.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.login.Login;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         //Changes the Slogan and the Login Button background if the device language is Portuguese
         if (Locale.getDefault().getDisplayLanguage().equals("português")) {
             loginSloganImg.setImageResource(R.drawable.slogan);
-            loginFacebookBtn.setBackgroundResource(R.drawable.btn_facebook);
+            loginFacebookBtn.setBackgroundResource(R.drawable.btn_signin_facebook_pt);
         }
 
         firebaseAuth = FirebaseAuth.getInstance();

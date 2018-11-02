@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_background">
+    android:background="@color/backgroundColor">
 
     <!-- View Title -->
     <TextView
@@ -41,8 +41,8 @@
 
         <ImageView
             android:id="@+id/profileHeaderBackgroundImg"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="415dp"
+            android:layout_height="160dp"
             android:contentDescription="@string/profileHeaderBackground"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -50,8 +50,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/profile_pic" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <!-- BLUE BACKGROUND LAYER -->
 
@@ -64,7 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@color/colorAccent" />
+            app:srcCompat="@color/colorAccentTransparency" />
 
         <!-- PROFILE PIC -->
 
@@ -77,7 +76,7 @@
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/profileHeaderPicture"
             android:elevation="4dp"
-            android:src="@drawable/profile_pic"
+            android:src="@drawable/default_picture"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -102,6 +101,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="matheus" />
+
+        <!-- BUTTONS -->
+
+        <Button
+            android:id="@+id/profileDeleteBtn"
+            android:layout_width="114dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/btn_ripple_delete"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/profileHeaderBackgroundImg"
+            app:layout_constraintEnd_toEndOf="@+id/profileHeaderTransparencyImg" />
+
+        <Button
+            android:id="@+id/profileLogoutBtn"
+            android:layout_width="114dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/btn_ripple_logout"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/profileDeleteBtn"
+            app:layout_constraintEnd_toEndOf="@+id/profileHeaderTransparencyImg" />
 
     </android.support.constraint.ConstraintLayout>
 

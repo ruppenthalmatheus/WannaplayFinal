@@ -1,4 +1,4 @@
-package com.example.matheus.wannaplay;
+package com.example.matheus.wannaplay.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.matheus.wannaplay.R;
 
 import java.util.Locale;
 
@@ -26,7 +28,7 @@ public class HomeFragment extends Fragment {
 
         //Changes the Preferences Button background if the device language is Portuguese
         if (Locale.getDefault().getDisplayLanguage().equals("português")) {
-            preferencesButton.setBackgroundResource(R.drawable.btn_preferences_br);
+            preferencesButton.setBackgroundResource(R.drawable.btn_ripple_preferences_pt);
         }
 
         return homeView;

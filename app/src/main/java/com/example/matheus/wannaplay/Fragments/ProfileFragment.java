@@ -1,21 +1,23 @@
-package com.example.matheus.wannaplay;
+package com.example.matheus.wannaplay.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.matheus.wannaplay.R;
 import com.example.matheus.wannaplay.Utilities.Tags;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -26,8 +28,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Calendar;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -36,13 +40,13 @@ public class ProfileFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    private ConstraintLayout mHeaderConstraint;
-    private ImageView mHeaderBackgroundImg;
     private CircleImageView mPhotoImg;
+    private boolean isVocalist, isGuitarist, isBasist, isDrummer, isOthers;
     private CheckBox mProfileVocalBtn, mProfileGuitarBtn, mProfileBassBtn, mProfileDrumsBtn, mProfileOthersBtn;
     private EditText mProfileAbout;
     private TextView mProfileName;
     private Switch mSpotifySwitch;
+    private Button mLogoutBtn, mDeleteBtn;
 
     @Nullable
     @Override
@@ -52,7 +56,6 @@ public class ProfileFragment extends Fragment {
         View profileView = inflater.inflate(R.layout.fragment_profile, container, false);
 
         //Loading components
-        mHeaderBackgroundImg = profileView.findViewById(R.id.profileHeaderBackgroundImg);
         mPhotoImg = profileView.findViewById(R.id.profilePhotoImg);
         mProfileName = profileView.findViewById(R.id.profileNameTxt);
         mProfileAbout = profileView.findViewById(R.id.profileAboutTxt);
@@ -62,6 +65,14 @@ public class ProfileFragment extends Fragment {
         mProfileDrumsBtn = profileView.findViewById(R.id.profileDrumCheckbox);
         mProfileOthersBtn = profileView.findViewById(R.id.profileOtherCheckbox);
         mSpotifySwitch = profileView.findViewById(R.id.profileSpotifySwitch);
+        mLogoutBtn = profileView.findViewById(R.id.profileLogoutBtn);
+        mDeleteBtn = profileView.findViewById(R.id.profileDeleteBtn);
+
+        //Changes the Logout and Delete Buttons background if the device language is Portuguese
+        if (Locale.getDefault().getDisplayLanguage().equals("português")) {
+            mLogoutBtn.setBackgroundResource(R.drawable.btn_ripple_logout_pt);
+            mDeleteBtn.setBackgroundResource(R.drawable.btn_ripple_delete_pt);
+        }
 
         getProfileData();
 
@@ -78,19 +89,58 @@ public class ProfileFragment extends Fragment {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        mProfileName.setText(getUserFirstName((String) document.get(t.getKEY_NAME())));
-                        mProfileAbout.setText(document.get(t.getKEY_ABOUT()).toString());
-                        mProfileVocalBtn.setChecked(document.getBoolean(t.getKEY_SKILLS() + "." + t.getKEY_VOCAL()));
-                        mProfileGuitarBtn.setChecked(document.getBoolean(t.getKEY_SKILLS() + "." + t.getKEY_GUITAR()));
-                        mProfileBassBtn.setChecked(document.getBoolean(t.getKEY_SKILLS() + "." + t.getKEY_BASS()));
-                        mProfileDrumsBtn.setChecked(document.getBoolean(t.getKEY_SKILLS() + "." + t.getKEY_DRUMS()));
-                        mProfileOthersBtn.setChecked(document.getBoolean(t.getKEY_SKILLS() + "." + t.getKEY_OTHERS()));
+
+                        SharedPreferences preferences = getContext().getSharedPreferences("userProfile", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+
+                        boolean isVocalist = document.getBoolean(t.getKEY_SKILLS() + "." + t.getKEY_VOCAL());
+                        editor.putBoolean("vocal", isVocalist);
+                        mProfileVocalBtn.setChecked(isVocalist);
+
+
+                        boolean isGuitarist = document.getBoolean(t.getKEY_SKILLS() + "." + t.getKEY_GUITAR());
+                        editor.putBoolean("guitar", isGuitarist);
+                        mProfileGuitarBtn.setChecked(isGuitarist);
+
+
+                        boolean isBasist = document.getBoolean(t.getKEY_SKILLS() + "." + t.getKEY_BASS());
+                        editor.putBoolean("bass", isBasist);
+                        mProfileBassBtn.setChecked(isBasist);
+
+
+                        boolean isDrummer = document.getBoolean(t.getKEY_SKILLS() + "." + t.getKEY_DRUMS());
+                        editor.putBoolean("drums", isDrummer);
+                        mProfileDrumsBtn.setChecked(isDrummer);
+
+
+                        boolean isOthers = document.getBoolean(t.getKEY_SKILLS() + "." + t.getKEY_OTHERS());
+                        editor.putBoolean("others", isOthers);
+                        mProfileOthersBtn.setChecked(isOthers);
+
+                        String profileName = getUserFirstName(document.getString(t.getKEY_NAME()));
+                        editor.putString("name", profileName);
+                        mProfileName.setText(profileName);
+
+                        String profileAbout = document.getString(t.getKEY_ABOUT());
+                        editor.putString("about", profileAbout);
+                        mProfileAbout.setText(profileAbout);
+
+                        String userPhotoUrl = document.getString(t.getKEY_PHOTO());
+                        editor.putString("photoURL", "");
+
+                        try {
+                            URL photoUrl = new URL(userPhotoUrl);
+                            Glide.with(getContext()).load(photoUrl.toString()).into(mPhotoImg);
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        }
+
                         Log.d("OK", "DocumentSnapshot data: " + document.getData());
                     } else {
                         Log.d("ERROR", "No such document");
                     }
                 } else {
-                    Log.d("ERROR", "get failed with ", task.getException());
+                    Log.d("ERROR", "Get failed with ", task.getException());
                 }
             }
         });
@@ -100,18 +150,11 @@ public class ProfileFragment extends Fragment {
 
         final Tags t = new Tags();
 
-        final boolean isVocalist = mProfileVocalBtn.isChecked();
-        final boolean isGuitarist = mProfileGuitarBtn.isChecked();
-        final boolean isBassist = mProfileBassBtn.isChecked();
-        final boolean isDrummer = mProfileDrumsBtn.isChecked();
-        final boolean isOthers = mProfileOthersBtn.isChecked();
         final String userKey = firebaseAuth.getCurrentUser().getUid();
 
         Map<String, Object> musician = new HashMap<>();
         musician.put(t.getKEY_ABOUT(), mProfileAbout.getText());
-
         DocumentReference userProfileRef = firebaseFirestore.collection(t.getKEY_MUSICIANS()).document(userKey);
-
         userProfileRef.update(t.getKEY_ABOUT(), mProfileAbout.getText().toString())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -126,13 +169,18 @@ public class ProfileFragment extends Fragment {
                     }
                 });
 
+        boolean isVocalist = mProfileVocalBtn.isChecked();
+        boolean isGuitarist = mProfileGuitarBtn.isChecked();
+        boolean isBasist = mProfileBassBtn.isChecked();
+        boolean isDrummer = mProfileDrumsBtn.isChecked();
+        boolean isOthers = mProfileOthersBtn.isChecked();
+
         Map<String, Object> skills = new HashMap<>();
         skills.put(t.getKEY_VOCAL(), isVocalist);
         skills.put(t.getKEY_GUITAR(), isGuitarist);
-        skills.put(t.getKEY_BASS(), isBassist);
+        skills.put(t.getKEY_BASS(), isBasist);
         skills.put(t.getKEY_DRUMS(), isDrummer);
         skills.put(t.getKEY_OTHERS(), isOthers);
-
         DocumentReference musicianReference = firebaseFirestore.collection(t.getKEY_MUSICIANS()).document(userKey);
         musicianReference.
                 update(t.getKEY_SKILLS(), skills)
@@ -148,12 +196,46 @@ public class ProfileFragment extends Fragment {
                         Log.w("ERROR", "Error adding skills", e);
                     }
                 });
+    }
 
+    @Override
+    public void onStart() {
+
+        SharedPreferences preferences = getContext().getSharedPreferences("userProfile", Context.MODE_PRIVATE);
+
+        mProfileVocalBtn.setChecked(preferences.getBoolean("vocal", isVocalist));
+        mProfileGuitarBtn.setChecked(preferences.getBoolean("guitar", isGuitarist));
+        mProfileBassBtn.setChecked(preferences.getBoolean("bass", isBasist));
+        mProfileDrumsBtn.setChecked(preferences.getBoolean("drums", isDrummer));
+        mProfileOthersBtn.setChecked(preferences.getBoolean("others", isOthers));
+        mProfileName.setText(String.valueOf(preferences.getString("name", "")));
+        mProfileAbout.setText(String.valueOf(preferences.getString("about", "")));
+
+        super.onStart();
     }
 
     @Override
     public void onStop() {
+
         updateProfile();
+
+        boolean isVocalist = mProfileVocalBtn.isChecked();
+        boolean isGuitarist = mProfileGuitarBtn.isChecked();
+        boolean isBasist = mProfileBassBtn.isChecked();
+        boolean isDrummer = mProfileDrumsBtn.isChecked();
+        boolean isOthers = mProfileOthersBtn.isChecked();
+
+        SharedPreferences preferences = getContext().getSharedPreferences("userProfile", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("vocal", isVocalist);
+        editor.putBoolean("guitar", isGuitarist);
+        editor.putBoolean("bass", isBasist);
+        editor.putBoolean("drums", isDrummer);
+        editor.putBoolean("others", isOthers);
+        editor.putString("name", mProfileName.getText().toString());
+        editor.putString("about", mProfileAbout.getText().toString());
+        editor.apply();
+
         super.onStop();
     }
 

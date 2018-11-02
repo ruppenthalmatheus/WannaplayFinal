@@ -1,4 +1,4 @@
-package com.example.matheus.wannaplay;
+package com.example.matheus.wannaplay.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,6 +14,7 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.matheus.wannaplay.R;
 import com.innovattic.rangeseekbar.RangeSeekBar;
 
 public class PreferencesFragment extends Fragment {

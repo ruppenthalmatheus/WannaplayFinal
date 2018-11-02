@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme_NoActionBar">
             <intent-filter>
@@ -46,12 +46,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:theme="@style/AppTheme_NoActionBar" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activities.RegisterActivity"
             android:theme="@style/AppTheme_NoActionBar" />
-        <activity android:name=".MusicianProfileActivity"></activity>
+        <activity android:name=".Activities.MusicianProfileActivity"></activity>
     </application>
 
 </manifest>

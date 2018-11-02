@@ -47,6 +47,18 @@
     <string name="homeFilterResultTxt2">Change your preferences.</string>
     <string name="homePreferencesBtn">Button to change your preferences</string>
 
+    <!--- GRID SCREEN -->
+
+    <string name="gridTitle">There are musicians in your area!</string>
+    <string name="gridPhoto">Profile photo</string>
+    <string name="gridInfo">Musician data</string>
+    <string name="gridName">Musician name</string>
+    <string name="gridPinIcon">Marking pin icon</string>
+    <string name="gridDistance">Distance between you and the musician</string>
+    <string name="gridDistanceUnit" translatable="false">km</string>
+    <string name="gridDistanceUnitDescription">Kilometers</string>
+    <string name="gridMoreIcon">See more icon</string>
+
     <!--- PREFERENCES SCREEN -->
 
     <string name="preferencesLookingForTxt">I\'m looking for:</string>

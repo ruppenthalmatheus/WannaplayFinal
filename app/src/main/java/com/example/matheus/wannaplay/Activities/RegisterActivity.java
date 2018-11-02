@@ -1,11 +1,10 @@
-package com.example.matheus.wannaplay;
+package com.example.matheus.wannaplay.Activities;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -19,7 +18,9 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.matheus.wannaplay.R;
 import com.example.matheus.wannaplay.Utilities.Tags;
+import com.facebook.Profile;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -29,6 +30,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -40,7 +42,6 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
     private String mMusicianPhotoUrl;
     private int mMusicianAge;
     private double mMusicianLatitude, mMusicianLongitude;
-    private boolean mMusicianVocal, mMusicianGuitar, mMusicianBass, mMusicianDrums, mMusicianOthers;
     private Calendar calendar;
     private TextView displayDate;
     private String userName, userKey;
@@ -75,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
 
         //Changes the Finish Button background if the device language is Portuguese
         if (Locale.getDefault().getDisplayLanguage().equals("português")) {
-            finishButton.setBackgroundResource(R.drawable.btn_finish_br);
+            finishButton.setBackgroundResource(R.drawable.btn_ripple_finish_pt);
         }
 
         userName = firebaseAuth.getCurrentUser().getDisplayName();
@@ -145,6 +146,8 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
 
         final Tags t = new Tags();
 
+        Profile profile = Profile.getCurrentProfile();
+
         final boolean isVocalist = mVocalBtn.isChecked();
         final boolean isGuitarist = mGuitarBtn.isChecked();
         final boolean isBassist = mBassBtn.isChecked();
@@ -152,13 +155,13 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
         final boolean isOthers = mOthersBtn.isChecked();
         calendar = Calendar.getInstance();
         //int age = calculateAge(calendar.getTimeInMillis());
-        String photoUrl = String.valueOf(firebaseAuth.getCurrentUser().getPhotoUrl());
+        String photoUrl = profile.getProfilePictureUri(500, 500).toString();
 
         Map<String, Object> musician = new HashMap<>();
         musician.put(t.getKEY_NAME(), userName);
         musician.put(t.getKEY_ABOUT(), "");
         musician.put(t.getKEY_EMAIL(), firebaseAuth.getCurrentUser().getEmail());
-        musician.put(t.getKEY_PHOTO(), photoUrl+"?type=large");
+        musician.put(t.getKEY_PHOTO(), photoUrl);
         musician.put(t.getKEY_AGE(), 28);
         musician.put(t.getKEY_LATITUDE(), mMusicianLatitude);
         musician.put(t.getKEY_LONGITUDE(), mMusicianLongitude);

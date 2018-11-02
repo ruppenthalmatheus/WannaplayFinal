@@ -62,4 +62,12 @@
     <string name="dialogMessage">Localização necessária para encontrar músicos próximos e permitir que outros músicos lhe encontrem.</string>
     <string name="permissionGranted">Permissão concedida!</string>
     <string name="permissionDenied">Permissão negada!</string>
+    <string name="gridTitle">Há músicos na sua região!</string>
+    <string name="gridPhoto">Foto de pefil</string>
+    <string name="gridInfo">Dados do músico</string>
+    <string name="gridName">Nome do músico</string>
+    <string name="gridPinIcon">Ícone de marcador de mapa</string>
+    <string name="gridDistance">Distância entre você e o músico</string>
+    <string name="gridDistanceUnitDescription">Quilômetros</string>
+    <string name="gridMoreIcon">Ícone de ver mais</string>
 </resources>
