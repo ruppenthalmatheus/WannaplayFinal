@@ -8,7 +8,7 @@ public class Musician {
     private double longitude;
     private String photoUrl;
 
-    public Musician(String name) {
+    public Musician() {
 
     }
 
