@@ -11,6 +11,7 @@ public class Tags {
     private String KEY_ABOUT = "about";
     private String KEY_LATITUDE = "latitude";
     private String KEY_LONGITUDE = "longitude";
+    private String KEY_DATE = "joined";
 
     /* SKILLS TAGS */
 
@@ -27,6 +28,10 @@ public class Tags {
 
     public String getKEY_NAME() {
         return KEY_NAME;
+    }
+
+    public String getKEY_DATE() {
+        return KEY_DATE;
     }
 
     public String getKEY_ABOUT() {

@@ -53,7 +53,7 @@
     <string name="musicianHeaderNameTxt">Nome do músico</string>
     <string name="musicianMessageBtn">Enviar mensagem</string>
     <string name="musicianAboutTxt">Uma breve descrição sobre o músico</string>
-    <string name="musicianSpotifyBands">Bandas curtidas no Spotify</string>
+    <string name="musicianSpotifyBands">Bandas curtidas no Spotify:</string>
     <string name="musicianAboutLabelTxt">Sobre o músico</string>
     <string name="registerRequiredBirthMessage">Informe sua data de nascimento.</string>
     <string name="dialogTitle">Permissão necessária</string>
@@ -70,4 +70,8 @@
     <string name="gridDistance">Distância entre você e o músico</string>
     <string name="gridDistanceUnitDescription">Quilômetros</string>
     <string name="gridMoreIcon">Ícone de ver mais</string>
+    <string name="musicianAbilitiesTxt">Habilidades musicais:</string>
+    <string name="MusicianTitle">PERFIL DO MÚSICO</string>
+    <string name="profileLogoutBtnTxt">Deslogar</string>
+    <string name="profileLogoutBtn">Botão para deslogar</string>
 </resources>

@@ -19,12 +19,12 @@ public class MusicianProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_musician_profile);
 
         backButton = findViewById(R.id.musicianBackBtn);
-        messageButton = findViewById(R.id.musicianSendMessageBtn);
+        messageButton = findViewById(R.id.musicianMessageBtn);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Back Button Action
+                finish();
             }
         });
 

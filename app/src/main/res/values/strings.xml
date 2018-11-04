@@ -5,6 +5,7 @@
     <string name="preferencesTitle">PREFERENCES</string>
     <string name="messagesTitle">MESSAGES</string>
     <string name="profileTitle">MY PROFILE</string>
+    <string name="MusicianTitle">MUSICIAN PROFILE</string>
 
     <!--- LOGIN SCREEN -->
 
@@ -66,6 +67,8 @@
     <string name="preferencesAgeLabelTxt">Age:</string>
     <string name="profileNewMembersTxt">New musicians in your area</string>
     <string name="profileNewMessagesTxt">New messages</string>
+    <string name="profileLogoutBtnTxt">Logout</string>
+    <string name="profileLogoutBtn">Button to logout</string>
 
     <!--- PROFILE SCREEN -->
 
@@ -94,10 +97,11 @@
     <string name="musicianHeaderTransparency">Blue color with transparency on top of the background image</string>
     <string name="musicianHeaderPicture">Picture of the musician</string>
     <string name="musicianHeaderNameTxt">Name of the musician</string>
+    <string name="musicianAbilitiesTxt">Musical skills: </string>
     <string name="musicianMessageBtn">Send message</string>
     <string name="musicianAboutLabelTxt">About the musician</string>
     <string name="musicianAboutTxt">A short description about the musician</string>
-    <string name="musicianSpotifyBands">Bands liked on Spotify</string>
+    <string name="musicianSpotifyBands">Bands liked on Spotify:</string>
 
     <!--- FACEBOOK ID's -->
 

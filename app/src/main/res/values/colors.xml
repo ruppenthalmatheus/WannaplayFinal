@@ -2,12 +2,12 @@
 <resources>
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#1F1F1F</color>
-    <color name="colorAccent">#2f80ed</color>
-    <color name="colorAccentTransparency">#c82f80ed</color>
-    <color name="backgroundColor">#151515</color>
+    <color name="colorAccent">#2F80ED</color>
+    <color name="colorAccentTransparency">#002f80ed</color>
+    <color name="backgroundColor">#0d0d0d</color>
     <color name="textColor">#E6E6E6</color>
     <color name="DisabledColor">#828282</color>
     <color name="DisabledSwitchThumbColor">#E0E0E0</color>
-    <color name="EnabledSwitchTrackColor">#2C416E</color>
+    <color name="EnabledSwitchTrackColor">#2c416e</color>
 
 </resources>

@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //Function that takes the credential and validates the login with Facebook
     private void handleFacebookAccessToken(AccessToken accessToken) {
-        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
+        final AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
         firebaseAuth.signInWithCredential(credential).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
@@ -124,11 +124,9 @@ public class LoginActivity extends AppCompatActivity {
         }).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                String loggedName = authResult.getUser().getDisplayName();
                 Intent intent = new Intent (getApplicationContext(), RegisterActivity.class);
                 finish();
                 startActivity(intent);
-                Toast.makeText(LoginActivity.this, "Olá " + loggedName + "!", Toast.LENGTH_SHORT).show();
             }
         });
     }

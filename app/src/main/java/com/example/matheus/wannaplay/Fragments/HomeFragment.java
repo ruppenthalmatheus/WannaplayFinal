@@ -11,20 +11,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.matheus.wannaplay.Models.Musician;
-import com.example.matheus.wannaplay.MusicianAdapter;
+import com.example.matheus.wannaplay.Adapters.MusicianAdapter;
 import com.example.matheus.wannaplay.R;
 import com.example.matheus.wannaplay.Utilities.Tags;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 public class HomeFragment extends Fragment {
 
     Tags t = new Tags();
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     private CollectionReference musiciansRef = firebaseFirestore.collection(t.getKEY_MUSICIANS());
     private View homeView;
+    private String mCurrentUserId;
+    Query lessCurrentUser;
 
     private MusicianAdapter adapter;
 
@@ -35,15 +41,18 @@ public class HomeFragment extends Fragment {
         //Turns the fragment_preferences layout into a View
         homeView = inflater.inflate(R.layout.fragment_grid_home, container, false);
 
+        mCurrentUserId = firebaseAuth.getCurrentUser().getUid();
+
         setUpRecyclerView();
+        adapter.startListening();
 
 
         return homeView;
     }
 
     private void setUpRecyclerView() {
-        Query query = musiciansRef
-                .orderBy(t.getKEY_NAME(), Query.Direction.ASCENDING);
+
+        Query query = musiciansRef.orderBy(t.getKEY_DATE(), Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Musician> options = new FirestoreRecyclerOptions.Builder<Musician>()
                 .setQuery(query, Musician.class)
                 .build();
@@ -60,6 +69,12 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         adapter.startListening();
     }
 

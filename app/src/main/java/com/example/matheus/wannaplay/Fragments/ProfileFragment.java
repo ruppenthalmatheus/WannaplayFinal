@@ -1,6 +1,7 @@
 package com.example.matheus.wannaplay.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,8 +18,11 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.matheus.wannaplay.Activities.LoginActivity;
+import com.example.matheus.wannaplay.Activities.MainActivity;
 import com.example.matheus.wannaplay.R;
 import com.example.matheus.wannaplay.Utilities.Tags;
+import com.facebook.login.Login;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -46,7 +50,6 @@ public class ProfileFragment extends Fragment {
     private EditText mProfileAbout;
     private TextView mProfileName;
     private Switch mSpotifySwitch;
-    private Button mLogoutBtn, mDeleteBtn;
 
     @Nullable
     @Override
@@ -65,14 +68,6 @@ public class ProfileFragment extends Fragment {
         mProfileDrumsBtn = profileView.findViewById(R.id.profileDrumCheckbox);
         mProfileOthersBtn = profileView.findViewById(R.id.profileOtherCheckbox);
         mSpotifySwitch = profileView.findViewById(R.id.profileSpotifySwitch);
-        mLogoutBtn = profileView.findViewById(R.id.profileLogoutBtn);
-        mDeleteBtn = profileView.findViewById(R.id.profileDeleteBtn);
-
-        //Changes the Logout and Delete Buttons background if the device language is Portuguese
-        if (Locale.getDefault().getDisplayLanguage().equals("português")) {
-            mLogoutBtn.setBackgroundResource(R.drawable.btn_ripple_logout_pt);
-            mDeleteBtn.setBackgroundResource(R.drawable.btn_ripple_delete_pt);
-        }
 
         getProfileData();
 

@@ -1,7 +1,6 @@
-package com.example.matheus.wannaplay;
+package com.example.matheus.wannaplay.Adapters;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.matheus.wannaplay.Activities.LoginActivity;
+import com.example.matheus.wannaplay.Activities.MainActivity;
+import com.example.matheus.wannaplay.Activities.MusicianProfileActivity;
 import com.example.matheus.wannaplay.Models.Musician;
+import com.example.matheus.wannaplay.R;
 import com.example.matheus.wannaplay.Utilities.Tags;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -44,17 +47,25 @@ public class MusicianAdapter extends FirestoreRecyclerAdapter<Musician, Musician
     @Override
     protected void onBindViewHolder(@NonNull MusicianHolder holder, int position, @NonNull Musician model) {
 
-        holder.mMusicianDescription.setText(model.getName() + ", " + model.getAge());;
-        holder.mMusicianDistance.setText(String.valueOf(getCurrentDistance(model.getLatitude(), model.getLongitude())));
-        holder.mMusicianPhoto.setScaleType((ImageView.ScaleType.CENTER_CROP));
+        firebaseAuth = FirebaseAuth.getInstance();
+        mCurrentUserId = firebaseAuth.getCurrentUser().getUid();
 
-        try {
-            URL photoUrl = new URL(model.getPhotoUrl());
-            Glide.with(holder.mMusicianPhoto.getContext()).load(photoUrl.toString()).into(holder.mMusicianPhoto);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+        if (getSnapshots().getSnapshot(position).getId().equals(mCurrentUserId)) {
+
+        } else {
+            String mMusicianName = model.getName();
+            String mMusicianFirstName = mMusicianName.substring(0, mMusicianName.indexOf(" "));
+            holder.mMusicianDescription.setText(mMusicianFirstName + ", " + model.getAge());
+            holder.mMusicianDistance.setText(String.valueOf(getCurrentDistance(model.getLatitude(), model.getLongitude())));
+            holder.mMusicianPhoto.setScaleType((ImageView.ScaleType.CENTER_CROP));
+
+            try {
+                URL photoUrl = new URL(model.getPhotoUrl());
+                Glide.with(holder.mMusicianPhoto.getContext()).load(photoUrl.toString()).into(holder.mMusicianPhoto);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
-
     }
 
     @NonNull
@@ -71,12 +82,20 @@ public class MusicianAdapter extends FirestoreRecyclerAdapter<Musician, Musician
         ImageView mMusicianPhoto;
         TextView mMusicianDistance;
 
-        public MusicianHolder(View itemView) {
+        public MusicianHolder(final View itemView) {
             super(itemView);
 
             mMusicianDescription = itemView.findViewById(R.id.cardViewDescriptionTxt);
             mMusicianDistance = itemView.findViewById(R.id.cardViewDistanceTxt);
             mMusicianPhoto = itemView.findViewById(R.id.cardViewPhotoImg);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    itemView.getContext().startActivity(new Intent(itemView.getContext(),MusicianProfileActivity.class));
+
+                }
+            });
 
         }
     }

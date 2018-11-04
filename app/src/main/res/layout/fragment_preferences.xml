@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
     android:paddingTop="-5dp">
 
+    <ImageView
+        android:id="@+id/preferencesTitleBgImg"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary" />
+
     <!-- View Title -->
     <TextView
+        android:id="@+id/preferencesTitleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/preferencesTitle"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textColor="#2F80ED" />
+        android:textColor="#2F80ED"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Filters -->
 
@@ -23,22 +36,31 @@
 
     <!-- Label -->
     <TextView
+        android:id="@+id/preferencesLFTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="16dp"
         android:text="@string/preferencesLookingForTxt"
         android:textColor="@color/textColor"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preferencesTitleBgImg" />
 
     <!-- Abilities Options -->
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:baselineAligned="false"
         android:gravity="center_vertical|center_horizontal"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preferencesLFTxt">
 
         <!-- Microphone Checkbox -->
         <CheckBox
@@ -53,8 +75,8 @@
             android:id="@+id/preferencesGuitarCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:button="@drawable/guitar_icon" />
 
         <!-- Bass Checkbox -->
@@ -62,8 +84,8 @@
             android:id="@+id/preferencesBassCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:button="@drawable/bass_icon" />
 
         <!-- Drum Checkbox -->
@@ -71,8 +93,8 @@
             android:id="@+id/preferencesDrumCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:button="@drawable/drum_icon" />
 
         <!-- Others Checkbox -->
@@ -87,123 +109,155 @@
 
     <!-- First Divider -->
     <ImageView
-        android:layout_width="409dp"
+        android:id="@+id/preferencesFirstDivider"
+        android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="170dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/divider"
-        android:contentDescription="@string/profileDivider" />
+        android:contentDescription="@string/profileDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <!-- Distance Filter -->
 
     <!-- Label -->
     <TextView
+        android:id="@+id/preferenceDistanceLblTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="16dp"
         android:text="@string/preferencesDistanceLabelTxt"
         android:textColor="@color/textColor"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preferencesFirstDivider" />
 
     <!-- Distance -->
     <TextView
         android:id="@+id/txt_distance"
-        android:layout_width="40dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="315dp"
-        android:layout_marginTop="190dp"
+        android:layout_marginEnd="4dp"
         android:fontFamily="sans-serif-light"
+        android:gravity="end"
         android:text="000"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
-        android:gravity="end"/>
+        app:layout_constraintBottom_toBottomOf="@+id/preferenceDistanceLblTxt"
+        app:layout_constraintEnd_toStartOf="@+id/txt_distance_unit"
+        app:layout_constraintTop_toTopOf="@+id/preferenceDistanceLblTxt" />
 
     <!-- Metric Unit Label -->
     <TextView
         android:id="@+id/txt_distance_unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="360dp"
-        android:layout_marginTop="190dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-light"
         android:text="km"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_distance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_distance" />
 
     <!-- Distance SeekBar -->
     <SeekBar
         android:id="@+id/distance_seekbar"
-        android:layout_width="405dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="234dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:progressBackgroundTint="@color/EnabledSwitchTrackColor"
-        android:thumb="@drawable/thumb_circle" />
+        android:thumb="@drawable/thumb_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preferenceDistanceLblTxt" />
 
     <!-- Second Divider -->
     <ImageView
-        android:layout_width="409dp"
+        android:id="@+id/preferencesSecondDivider"
+        android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="270dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/divider"
-        android:contentDescription="@string/profileDivider" />
-
+        android:contentDescription="@string/profileDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distance_seekbar" />
 
     <!-- Age Filter -->
 
     <!-- Label -->
     <TextView
+        android:id="@+id/preferencesAgeLblTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="290dp"
+        android:layout_marginTop="16dp"
         android:text="@string/preferencesAgeLabelTxt"
         android:textColor="@color/textColor"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preferencesSecondDivider" />
 
     <!-- Min Age TextView -->
     <TextView
         android:id="@+id/txt_min_age"
-        android:layout_width="25dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="315dp"
-        android:layout_marginTop="290dp"
-        android:gravity="end"
+        android:layout_marginEnd="4dp"
         android:fontFamily="sans-serif-light"
+        android:gravity="end"
         android:text="0"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/preferencesAgeLblTxt"
+        app:layout_constraintEnd_toStartOf="@+id/txt_age_separator"
+        app:layout_constraintTop_toTopOf="@+id/preferencesAgeLblTxt" />
 
     <!-- Max Age Label -->
     <TextView
         android:id="@+id/txt_max_age"
-        android:layout_width="25dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="360dp"
-        android:layout_marginTop="290dp"
-        android:gravity="center"
+        android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-light"
+        android:gravity="center"
         android:text="0"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_age_separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_age_separator" />
 
     <!-- Separator -->
     <TextView
         android:id="@+id/txt_age_separator"
-        android:layout_width="20dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="342dp"
-        android:layout_marginTop="290dp"
-        android:gravity="center"
+        android:layout_marginEnd="4dp"
         android:fontFamily="sans-serif-light"
+        android:gravity="center"
         android:text="-"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_min_age"
+        app:layout_constraintEnd_toStartOf="@+id/txt_max_age"
+        app:layout_constraintTop_toTopOf="@+id/txt_min_age" />
 
     <!-- Age RangeSeekBar -->
     <com.innovattic.rangeseekbar.RangeSeekBar
@@ -211,105 +265,87 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="240dp"
-        android:layout_marginTop="325dp"
-        app:rsb_maxThumbDrawable="@drawable/thumb_circle"
-        app:rsb_minThumbDrawable="@drawable/thumb_circle"
-        app:rsb_minRange="1"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preferencesAgeLblTxt"
         app:rsb_max="60"
+        app:rsb_maxThumbDrawable="@drawable/thumb_circle"
+        app:rsb_minRange="1"
+        app:rsb_minThumbDrawable="@drawable/thumb_circle"
         app:rsb_trackColor="#1d2029"
         app:rsb_trackSelectedColor="@color/colorAccent" />
 
     <!-- Third Divider -->
     <ImageView
-        android:layout_width="409dp"
+        android:id="@+id/preferencesThirdDivider"
+        android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="370dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/divider"
-        android:contentDescription="@string/profileDivider" />
+        android:contentDescription="@string/profileDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age_seekbar" />
 
     <!-- Notifications -->
 
     <!-- Label -->
     <TextView
+        android:id="@+id/preferencesNotificationsLblTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="390dp"
+        android:layout_marginTop="16dp"
         android:text="@string/notifications_preferences"
         android:textColor="@color/textColor"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preferencesThirdDivider" />
 
-    <!-- Switch New Members -->
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/lbl_new_messages"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="420dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/profileNewMessagesTxt"
+        android:textColor="@color/textColor"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preferencesNotificationsLblTxt" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/lbl_new_members"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:text="@string/profileNewMembersTxt"
-                android:textColor="@color/textColor"
-                android:textSize="14sp" />
-
-            <Switch
-                android:id="@+id/preferencesSwitchMusicians"
-                style="@style/SwitchCompatStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="2dp"/>
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
-    <!-- Switch New Messages -->
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Switch
+        android:id="@+id/preferencesSwitchMessages"
+        style="@style/SwitchCompatStyle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="445dp"
-        android:orientation="horizontal">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lbl_new_messages"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lbl_new_messages" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+    <Button
+        android:id="@+id/preferencesBtnLogout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@android:color/background_light"
+        android:drawableLeft="@drawable/ic_logout"
+        android:paddingLeft="140dp"
+        android:paddingRight="120dp"
+        android:text="@string/profileLogoutBtnTxt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/lbl_new_messages"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="sans-serif-light"
-                android:text="@string/profileNewMessagesTxt"
-                android:textColor="@color/textColor"
-                android:textSize="14sp" />
-
-            <Switch
-                android:id="@+id/preferencesSwitchMessages"
-                style="@style/SwitchCompatStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="2dp"/>
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

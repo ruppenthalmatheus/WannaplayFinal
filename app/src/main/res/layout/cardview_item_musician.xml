@@ -6,7 +6,7 @@
     android:layout_height="210dp"
     android:layout_marginTop="16dp"
     android:layout_marginStart="20dp"
-    android:elevation="4dp">
+    app:cardElevation="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:contentDescription="@string/gridPhoto"
             app:srcCompat="@drawable/default_picture" />
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:id="@+id/cardViewInfoBg"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -32,64 +32,68 @@
                 android:id="@+id/cardViewDescriptionTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="3dp"
                 android:contentDescription="@string/gridName"
                 android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Ruppenthal, 28" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/cardViewPinImg"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:layout_marginTop="3.5dp"
-                    android:contentDescription="@string/gridPinIcon"
-                    app:srcCompat="@drawable/ic_pin" />
+            <ImageView
+                android:id="@+id/cardViewPinImg"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="5dp"
+                android:contentDescription="@string/gridPinIcon"
+                app:layout_constraintBottom_toBottomOf="@+id/cardViewDistanceTxt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cardViewDistanceTxt"
+                app:srcCompat="@drawable/ic_pin" />
 
-                <TextView
-                    android:id="@+id/cardViewDistanceTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="1dp"
-                    android:contentDescription="@string/gridDistance"
-                    android:textColor="@color/EnabledSwitchTrackColor"
-                    android:textSize="10sp"
-                    tools:text="30" />
+            <TextView
+                android:id="@+id/cardViewDistanceTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="2dp"
+                android:contentDescription="@string/gridDistance"
+                android:paddingTop="2dp"
+                android:textColor="@color/EnabledSwitchTrackColor"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/cardViewMoreImg"
+                app:layout_constraintStart_toEndOf="@+id/cardViewPinImg"
+                app:layout_constraintTop_toTopOf="@+id/cardViewMoreImg"
+                tools:text="30" />
 
-                <TextView
-                    android:id="@+id/cardViewDistanceUnitTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="1dp"
-                    android:contentDescription="@string/gridDistanceUnit"
-                    android:text="@string/gridDistanceUnit"
-                    android:textColor="@color/EnabledSwitchTrackColor"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/cardViewDistanceTxt"
-                    app:layout_constraintStart_toEndOf="@+id/cardViewDistanceTxt"
-                    app:layout_constraintTop_toTopOf="@+id/cardViewDistanceTxt" />
+            <TextView
+                android:id="@+id/cardViewDistanceUnitTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:contentDescription="@string/gridDistanceUnit"
+                android:text="@string/gridDistanceUnit"
+                android:textAlignment="center"
+                android:textColor="@color/EnabledSwitchTrackColor"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/cardViewDistanceTxt"
+                app:layout_constraintStart_toEndOf="@+id/cardViewDistanceTxt"
+                app:layout_constraintTop_toTopOf="@+id/cardViewDistanceTxt" />
 
-                <ImageView
-                    android:id="@+id/cardViewMoreImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="105dp"
-                    android:layout_marginBottom="2dp"
-                    app:srcCompat="@drawable/ic_more"
-                    android:contentDescription="@string/gridMoreIcon"/>
+            <ImageView
+                android:id="@+id/cardViewMoreImg"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="4dp"
+                android:contentDescription="@string/gridMoreIcon"
+                app:layout_constraintBottom_toBottomOf="@+id/cardViewDistanceUnitTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewDescriptionTxt"
+                app:srcCompat="@drawable/ic_more" />
 
-            </LinearLayout>
-
-        </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
 

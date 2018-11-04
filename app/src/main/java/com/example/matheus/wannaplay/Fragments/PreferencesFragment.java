@@ -1,6 +1,7 @@
 package com.example.matheus.wannaplay.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,12 +10,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.matheus.wannaplay.Activities.LoginActivity;
 import com.example.matheus.wannaplay.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.innovattic.rangeseekbar.RangeSeekBar;
 
 public class PreferencesFragment extends Fragment {
@@ -23,7 +27,8 @@ public class PreferencesFragment extends Fragment {
     private TextView mMinAgeTextView;
     private TextView mMaxAgeTextView;
     private CheckBox mVocalBtn, mGuitarBtn, mBassBtn, mDrumsBtn, mOthersBtn;
-    private Switch mNewMusiciansSwitch, mNewMessagesSwitch;
+    private Switch mNewMessagesSwitch;
+    private Button mLogoutBtn;
     private SeekBar mDistanceSeekbar;
     private RangeSeekBar mAgeSeekbar;
 
@@ -43,8 +48,10 @@ public class PreferencesFragment extends Fragment {
         mDrumsBtn = preferencesView.findViewById(R.id.preferencesDrumCheckbox);
         mOthersBtn = preferencesView.findViewById(R.id.preferencesOtherCheckbox);
 
+        //Loading Logout Button
+        mLogoutBtn = preferencesView.findViewById(R.id.preferencesBtnLogout);
+
         //Loading Switches
-        mNewMusiciansSwitch = preferencesView.findViewById(R.id.preferencesSwitchMusicians);
         mNewMessagesSwitch = preferencesView.findViewById(R.id.preferencesSwitchMessages);
 
         /* --- Setting up the SeekBar --- */
@@ -58,21 +65,12 @@ public class PreferencesFragment extends Fragment {
         //Setting up the maximum distance that can be covered by the filter
         mDistanceSeekbar.setMax(200);
 
-        /*//Setting up an default filter for the seek bar and updating the TextView label
-        mDistanceSeekbar.setProgress(50);
-        mDistanceTextView.setText(String.valueOf(mDistanceSeekbar.getProgress()));*/
-
-        /* --- Setting up the RangeBar --- */
-
         //Loading the component
         mAgeSeekbar = preferencesView.findViewById(R.id.age_seekbar);
 
         //Loading the tracking TextView labels for max and min age
         mMinAgeTextView = preferencesView.findViewById(R.id.txt_min_age);
         mMaxAgeTextView = preferencesView.findViewById(R.id.txt_max_age);
-
-        /*//Setting up the max age TextView label
-        mMaxAgeTextView.setText(String.valueOf(mAgeSeekbar.getMax()));*/
 
         //Distance SeekBar config
         mDistanceSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -123,6 +121,16 @@ public class PreferencesFragment extends Fragment {
             }
         });
 
+        mLogoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent (getContext(), LoginActivity.class);
+                startActivity(intent);
+                getActivity().getFragmentManager().popBackStack();
+            }
+        });
+
         return preferencesView;
 
     }
@@ -159,11 +167,6 @@ public class PreferencesFragment extends Fragment {
         mAgeSeekbar.setMinThumbValue(preferences.getInt("minAge", 18));
         mAgeSeekbar.setMaxThumbValue(preferences.getInt("maxAge", 45));
 
-
-        if (preferences.getBoolean("newMusicians", false)) {
-            mNewMusiciansSwitch.setChecked(true);
-        }
-
         if (preferences.getBoolean("newMessages", false)) {
             mNewMessagesSwitch.setChecked(true);
         }
@@ -183,7 +186,6 @@ public class PreferencesFragment extends Fragment {
         editor.putInt("distance", Integer.parseInt(mDistanceTextView.getText().toString()));
         editor.putInt("minAge", Integer.parseInt(mMinAgeTextView.getText().toString()));
         editor.putInt("maxAge", Integer.parseInt(mMaxAgeTextView.getText().toString()));
-        editor.putBoolean("newMusicians", mNewMusiciansSwitch.isChecked());
         editor.putBoolean("newMessages", mNewMessagesSwitch.isChecked());
         editor.apply();
         super.onStop();

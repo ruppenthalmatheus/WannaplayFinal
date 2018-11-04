@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.matheus.wannaplay">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -52,7 +51,9 @@
         <activity
             android:name=".Activities.RegisterActivity"
             android:theme="@style/AppTheme_NoActionBar" />
-        <activity android:name=".Activities.MusicianProfileActivity"></activity>
+        <activity
+            android:name=".Activities.MusicianProfileActivity"
+            android:theme="@style/AppTheme_NoActionBar" />
     </application>
 
 </manifest>

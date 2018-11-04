@@ -32,14 +32,17 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
 
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
+
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private String mMusicianPhotoUrl;
     private int mMusicianAge;
     private double mMusicianLatitude, mMusicianLongitude;
     private Calendar calendar;
@@ -105,6 +108,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 displayDate.setText(day + "/" + (month + 1) + "/" + year);
+                                mMusicianAge = calculateAge(day, month, year);
                             }
                         }, year, month, day);
                 datePickerDialog.show();
@@ -128,19 +132,15 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
 
     }
 
-    /*private int calculateAge(long date) {
-        Calendar c = Calendar.getInstance();
-        c.setTimeInMillis(date);
-        Calendar today = Calendar.getInstance();
+    private int calculateAge(int pDay, int pMonth, int pYear) {
 
-        int age = today.get((Calendar.YEAR) - c.get(Calendar.YEAR));
-
-        if (today.get(Calendar.DAY_OF_MONTH) < c.get(Calendar.DAY_OF_MONTH)) {
-            age--;
-        }
+        LocalDate birthdate = new LocalDate(pYear, pMonth, pDay);
+        LocalDate now = new LocalDate();
+        Years difference = Years.yearsBetween(birthdate, now);
+        int age = difference.getYears();
 
         return age;
-    }*/
+    }
 
     private void saveMusician() {
 
@@ -154,7 +154,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
         final boolean isDrummer = mDrumsBtn.isChecked();
         final boolean isOthers = mOthersBtn.isChecked();
         calendar = Calendar.getInstance();
-        //int age = calculateAge(calendar.getTimeInMillis());
+        final Date joined = calendar.getTime();
         String photoUrl = profile.getProfilePictureUri(500, 500).toString();
 
         Map<String, Object> musician = new HashMap<>();
@@ -162,9 +162,10 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
         musician.put(t.getKEY_ABOUT(), "");
         musician.put(t.getKEY_EMAIL(), firebaseAuth.getCurrentUser().getEmail());
         musician.put(t.getKEY_PHOTO(), photoUrl);
-        musician.put(t.getKEY_AGE(), 28);
+        musician.put(t.getKEY_AGE(), mMusicianAge);
         musician.put(t.getKEY_LATITUDE(), mMusicianLatitude);
         musician.put(t.getKEY_LONGITUDE(), mMusicianLongitude);
+        musician.put(t.getKEY_DATE(), joined);
 
         firebaseFirestore.collection(t.getKEY_MUSICIANS()).document(userKey)
                 .set(musician)
