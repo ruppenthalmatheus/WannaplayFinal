@@ -1,5 +1,7 @@
 package com.example.matheus.wannaplay.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,10 +17,8 @@ import com.example.matheus.wannaplay.Adapters.MusicianAdapter;
 import com.example.matheus.wannaplay.R;
 import com.example.matheus.wannaplay.Utilities.Tags;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -29,8 +29,6 @@ public class HomeFragment extends Fragment {
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     private CollectionReference musiciansRef = firebaseFirestore.collection(t.getKEY_MUSICIANS());
     private View homeView;
-    private String mCurrentUserId;
-    Query lessCurrentUser;
 
     private MusicianAdapter adapter;
 
@@ -41,7 +39,7 @@ public class HomeFragment extends Fragment {
         //Turns the fragment_preferences layout into a View
         homeView = inflater.inflate(R.layout.fragment_grid_home, container, false);
 
-        mCurrentUserId = firebaseAuth.getCurrentUser().getUid();
+        firebaseAuth.getCurrentUser().getUid();
 
         setUpRecyclerView();
         adapter.startListening();
@@ -52,18 +50,109 @@ public class HomeFragment extends Fragment {
 
     private void setUpRecyclerView() {
 
-        Query query = musiciansRef.orderBy(t.getKEY_DATE(), Query.Direction.DESCENDING);
-        FirestoreRecyclerOptions<Musician> options = new FirestoreRecyclerOptions.Builder<Musician>()
-                .setQuery(query, Musician.class)
-                .build();
+        int mMinAge = Integer.valueOf(getMinAge());
+        int mMaxAge = Integer.valueOf(getMaxAge());
+        int mMaxDistance = Integer.valueOf(getMaxDistance());
+        boolean mVocalBtnState = getVocalBtnState();
+        boolean mGuitarBtnState = getGuitarBtnState();
+        boolean mBassBtnState = getBassBtnState();
+        boolean mDrumsBtnState = getDrumsBtnState();
+        boolean mOthersBtnState = getOthersBtnState();
 
-        adapter = new MusicianAdapter(options);
+        if (mVocalBtnState && mBassBtnState && mGuitarBtnState && mDrumsBtnState && mOthersBtnState) {
 
-        RecyclerView recyclerView = homeView.findViewById(R.id.homeGridRecycleView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 2));
-        recyclerView.setAdapter(adapter);
+            Query query = musiciansRef.whereLessThanOrEqualTo(t.getKEY_AGE(), mMaxAge)
+                    .whereGreaterThanOrEqualTo(t.getKEY_AGE(), mMinAge)
+                    .orderBy(t.getKEY_AGE(), Query.Direction.ASCENDING);
+            FirestoreRecyclerOptions<Musician> options = new FirestoreRecyclerOptions.Builder<Musician>()
+                    .setQuery(query, Musician.class)
+                    .build();
 
+            adapter = new MusicianAdapter(options);
+
+            RecyclerView recyclerView = homeView.findViewById(R.id.homeGridRecycleView);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 2));
+            recyclerView.setAdapter(adapter);
+
+        } else {
+
+            Query query = musiciansRef.whereLessThanOrEqualTo(t.getKEY_AGE(), mMaxAge)
+                    .whereGreaterThanOrEqualTo(t.getKEY_AGE(), mMinAge)
+                    .whereEqualTo(t.getKEY_SKILLS() + "." + t.getKEY_VOCAL(), mVocalBtnState)
+                    .whereEqualTo(t.getKEY_SKILLS() + "." + t.getKEY_GUITAR(), mGuitarBtnState)
+                    .whereEqualTo(t.getKEY_SKILLS() + "." + t.getKEY_BASS(), mBassBtnState)
+                    .whereEqualTo(t.getKEY_SKILLS() + "." + t.getKEY_DRUMS(), mDrumsBtnState)
+                    .whereEqualTo(t.getKEY_SKILLS() + "." + t.getKEY_OTHERS(), mOthersBtnState)
+                    .orderBy(t.getKEY_AGE(), Query.Direction.ASCENDING);
+            FirestoreRecyclerOptions<Musician> options = new FirestoreRecyclerOptions.Builder<Musician>()
+                    .setQuery(query, Musician.class)
+                    .build();
+
+            adapter = new MusicianAdapter(options);
+
+            RecyclerView recyclerView = homeView.findViewById(R.id.homeGridRecycleView);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 2));
+            recyclerView.setAdapter(adapter);
+        }
+
+    }
+
+    public String getMinAge() {
+        SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        return String.valueOf(preferences.getInt("minAge", 0));
+    }
+
+    public String getMaxAge() {
+        SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        return String.valueOf(preferences.getInt("maxAge", 60));
+    }
+
+    public String getMaxDistance() {
+        SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        return String.valueOf(preferences.getInt("distance", 200));
+    }
+
+    public Boolean getVocalBtnState() {
+        SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        return preferences.getBoolean("vocal", false);
+    }
+
+    public Boolean getGuitarBtnState() {
+        SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        return preferences.getBoolean("guitar", false);
+    }
+
+    public Boolean getBassBtnState() {
+        SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        return preferences.getBoolean("bass", false);
+    }
+
+    public Boolean getDrumsBtnState() {
+        SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        return preferences.getBoolean("drums", false);
+    }
+
+    public Boolean getOthersBtnState() {
+        SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        return preferences.getBoolean("others", false);
     }
 
     @Override

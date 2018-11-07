@@ -119,14 +119,19 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (displayDate.getText().toString().equals("")) {
-                    Toast.makeText(RegisterActivity.this, getResources().getString(R.string.registerRequiredBirthMessage), Toast.LENGTH_SHORT).show();
+                if (mVocalBtn.isChecked() || mGuitarBtn.isChecked() || mBassBtn.isChecked() || mDrumsBtn.isChecked() || mOthersBtn.isChecked()) {
+                    if (displayDate.getText().toString().equals("")) {
+                        Toast.makeText(RegisterActivity.this, getResources().getString(R.string.registerRequiredBirthMessage), Toast.LENGTH_SHORT).show();
+                    } else {
+                        saveMusician();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        finish();
+                        startActivity(intent);
+                    }
                 } else {
-                    saveMusician();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    finish();
-                    startActivity(intent);
+                    Toast.makeText(RegisterActivity.this, getResources().getString(R.string.registerRequiredAbilitieshMessage),Toast.LENGTH_LONG).show();
                 }
+
             }
         });
 

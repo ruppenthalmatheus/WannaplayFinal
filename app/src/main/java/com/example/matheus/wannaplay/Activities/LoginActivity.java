@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
 
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
+            public void onSuccess(final LoginResult loginResult) {
 
                 GraphRequest mGraphRequest = GraphRequest.newMeRequest(
                         loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                                     // handle error
                                 } else {
                                     String email = me.optString("email");
-                                    checkEmail(email);
+                                    handleFacebookAccessToken(loginResult.getAccessToken(), email);
                                 }
                             }
                         });
@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                 mGraphRequest.setParameters(parameters);
                 mGraphRequest.executeAsync();
 
-                handleFacebookAccessToken(loginResult.getAccessToken());
+                //handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
             @Override
@@ -141,40 +141,62 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //Function that takes the credential and validates the login with Facebook
-    private void handleFacebookAccessToken(AccessToken accessToken) {
-        final AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
-        firebaseAuth.signInWithCredential(credential).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("ERROR", "" + e.getMessage());
-            }
-        }).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-                finish();
-                startActivity(intent);
-            }
-        });
-    }
+    private void handleFacebookAccessToken(final AccessToken accessToken, final String pEmail) {
 
-    public void checkEmail(String pEmail) {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
+        //Opens a login request
         firebaseAuth.fetchSignInMethodsForEmail(pEmail)
                 .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
                     @Override
                     public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
 
-                        boolean check = !task.getResult().getSignInMethods().isEmpty();
+                        FirebaseAuth firebaseAuth1 = FirebaseAuth.getInstance();
+                        boolean check = task.getResult().getSignInMethods().isEmpty();
 
-                        if (!check) {
-                            Toast.makeText(getApplicationContext(), "EMAIL NOT FOUND", Toast.LENGTH_SHORT).show();
+                        //Check if an account with the received email already exists
+                        /*If it already exists, it takes the token, logs it in, and redirects it to MainActivity.
+                          If it doesn't, log in and redirect to RegisterActivity*/
+                        if (check) {
+
+                            String token = AccessToken.getCurrentAccessToken().getToken();
+
+                            final AuthCredential credential = FacebookAuthProvider.getCredential(token);
+                            firebaseAuth1.signInWithCredential(credential).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Log.e("ERROR", "" + e.getMessage());
+                                }
+                            }).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+                                    Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                                    finish();
+                                    startActivity(intent);
+                                }
+                            });
+
                         } else {
-                            Toast.makeText(getApplicationContext(), "EMAIL EXISTS", Toast.LENGTH_SHORT).show();
-                        }
 
+                            String token = AccessToken.getCurrentAccessToken().getToken();
+
+                            final AuthCredential credential = FacebookAuthProvider.getCredential(token);
+                            firebaseAuth1.signInWithCredential(credential).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Log.e("ERROR", "" + e.getMessage());
+                                }
+                            }).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    finish();
+                                    startActivity(intent);
+                                }
+                            });
+                        }
                     }
                 });
     }
@@ -218,7 +240,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == STORAGE_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, getResources().getString(R.string.permissionGranted), Toast.LENGTH_SHORT).show();
+                //Permission Granted
             } else {
                 Toast.makeText(this, getResources().getString(R.string.permissionDenied), Toast.LENGTH_SHORT).show();
                 finish();

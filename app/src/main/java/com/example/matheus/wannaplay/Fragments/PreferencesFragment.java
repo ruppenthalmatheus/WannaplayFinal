@@ -26,9 +26,8 @@ public class PreferencesFragment extends Fragment {
     private TextView mDistanceTextView;
     private TextView mMinAgeTextView;
     private TextView mMaxAgeTextView;
-    private CheckBox mVocalBtn, mGuitarBtn, mBassBtn, mDrumsBtn, mOthersBtn;
+    private CheckBox mVocalBtn, mGuitarBtn, mBassBtn, mDrumsBtn, mOthersBtn, mLogoutBtn;
     private Switch mNewMessagesSwitch;
-    private Button mLogoutBtn;
     private SeekBar mDistanceSeekbar;
     private RangeSeekBar mAgeSeekbar;
 
@@ -47,9 +46,8 @@ public class PreferencesFragment extends Fragment {
         mBassBtn = preferencesView.findViewById(R.id.preferencesBassCheckbox);
         mDrumsBtn = preferencesView.findViewById(R.id.preferencesDrumCheckbox);
         mOthersBtn = preferencesView.findViewById(R.id.preferencesOtherCheckbox);
-
-        //Loading Logout Button
         mLogoutBtn = preferencesView.findViewById(R.id.preferencesBtnLogout);
+        mLogoutBtn.setChecked(true);
 
         //Loading Switches
         mNewMessagesSwitch = preferencesView.findViewById(R.id.preferencesSwitchMessages);
@@ -124,6 +122,7 @@ public class PreferencesFragment extends Fragment {
         mLogoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mLogoutBtn.setChecked(false);
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent (getContext(), LoginActivity.class);
                 startActivity(intent);
@@ -140,23 +139,23 @@ public class PreferencesFragment extends Fragment {
         SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
-        if (preferences.getBoolean("vocal", false)) {
+        if (preferences.getBoolean("vocal", true)) {
             mVocalBtn.setChecked(true);
         }
 
-        if (preferences.getBoolean("guitar", false)) {
+        if (preferences.getBoolean("guitar", true)) {
             mGuitarBtn.setChecked(true);
         }
 
-        if (preferences.getBoolean("bass", false)) {
+        if (preferences.getBoolean("bass", true)) {
             mBassBtn.setChecked(true);
         }
 
-        if (preferences.getBoolean("drums", false)) {
+        if (preferences.getBoolean("drums", true)) {
             mDrumsBtn.setChecked(true);
         }
 
-        if (preferences.getBoolean("others", false)) {
+        if (preferences.getBoolean("others", true)) {
             mOthersBtn.setChecked(true);
         }
 

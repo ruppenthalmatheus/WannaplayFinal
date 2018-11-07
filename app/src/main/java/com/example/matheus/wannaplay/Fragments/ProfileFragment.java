@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.matheus.wannaplay.Activities.LoginActivity;
@@ -212,26 +213,26 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onStop() {
 
-        updateProfile();
+            updateProfile();
 
-        boolean isVocalist = mProfileVocalBtn.isChecked();
-        boolean isGuitarist = mProfileGuitarBtn.isChecked();
-        boolean isBasist = mProfileBassBtn.isChecked();
-        boolean isDrummer = mProfileDrumsBtn.isChecked();
-        boolean isOthers = mProfileOthersBtn.isChecked();
+            boolean isVocalist = mProfileVocalBtn.isChecked();
+            boolean isGuitarist = mProfileGuitarBtn.isChecked();
+            boolean isBasist = mProfileBassBtn.isChecked();
+            boolean isDrummer = mProfileDrumsBtn.isChecked();
+            boolean isOthers = mProfileOthersBtn.isChecked();
 
-        SharedPreferences preferences = getContext().getSharedPreferences("userProfile", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("vocal", isVocalist);
-        editor.putBoolean("guitar", isGuitarist);
-        editor.putBoolean("bass", isBasist);
-        editor.putBoolean("drums", isDrummer);
-        editor.putBoolean("others", isOthers);
-        editor.putString("name", mProfileName.getText().toString());
-        editor.putString("about", mProfileAbout.getText().toString());
-        editor.apply();
+            SharedPreferences preferences = getContext().getSharedPreferences("userProfile", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("vocal", isVocalist);
+            editor.putBoolean("guitar", isGuitarist);
+            editor.putBoolean("bass", isBasist);
+            editor.putBoolean("drums", isDrummer);
+            editor.putBoolean("others", isOthers);
+            editor.putString("name", mProfileName.getText().toString());
+            editor.putString("about", mProfileAbout.getText().toString());
+            editor.apply();
+            super.onStop();
 
-        super.onStop();
     }
 
     private String getUserFirstName(String pName) {

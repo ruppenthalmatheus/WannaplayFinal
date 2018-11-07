@@ -21,15 +21,24 @@ import com.example.matheus.wannaplay.Utilities.Tags;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DecimalFormat;
+
+import javax.annotation.Nullable;
 
 public class MusicianAdapter extends FirestoreRecyclerAdapter<Musician, MusicianAdapter.MusicianHolder> {
 
@@ -45,14 +54,14 @@ public class MusicianAdapter extends FirestoreRecyclerAdapter<Musician, Musician
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull MusicianHolder holder, int position, @NonNull Musician model) {
+    protected void onBindViewHolder(@NonNull final MusicianHolder holder, final int position, @NonNull final Musician model) {
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        CollectionReference musiciansRef = firebaseFirestore.collection(t.getKEY_MUSICIANS());
         mCurrentUserId = firebaseAuth.getCurrentUser().getUid();
 
-        if (getSnapshots().getSnapshot(position).getId().equals(mCurrentUserId)) {
-
-        } else {
+        //if (getSnapshots().getSnapshot(position).getId().equals(mCurrentUserId)) {
             String mMusicianName = model.getName();
             String mMusicianFirstName = mMusicianName.substring(0, mMusicianName.indexOf(" "));
             holder.mMusicianDescription.setText(mMusicianFirstName + ", " + model.getAge());
@@ -65,7 +74,7 @@ public class MusicianAdapter extends FirestoreRecyclerAdapter<Musician, Musician
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-        }
+        //}
     }
 
     @NonNull
@@ -92,7 +101,7 @@ public class MusicianAdapter extends FirestoreRecyclerAdapter<Musician, Musician
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    itemView.getContext().startActivity(new Intent(itemView.getContext(),MusicianProfileActivity.class));
+                    itemView.getContext().startActivity(new Intent(itemView.getContext(), MusicianProfileActivity.class));
 
                 }
             });

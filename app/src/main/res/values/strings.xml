@@ -18,11 +18,12 @@
     <string name="registerHello">Hello</string>
     <string name="registerMessage1">Welcome, your profile is almost ready!</string>
     <string name="registerMessage2">We just need some more information.</string>
-    <string name="registerHabilities">Your musical skills are:</string>
+    <string name="registerHabilities">Your musical skills is:</string>
     <string name="registerBirth">You were born in:</string>
     <string name="registerBirthPicker">Click to select your date of birth</string>
     <string name="registerBirthDescription">In Wannaplay you can filter musicians by age.</string>
-    <string name="registerRequiredBirthMessage">Enter your date of birth.</string>
+    <string name="registerRequiredBirthMessage">Enter your date of birth!</string>
+    <string name="registerRequiredAbilitieshMessage">Please select at least one ability to continue!</string>
 
     <!--- PERMISSION DIALOG -->
 
@@ -65,10 +66,11 @@
     <string name="preferencesLookingForTxt">I\'m looking for:</string>
     <string name="preferencesDistanceLabelTxt">Distance:</string>
     <string name="preferencesAgeLabelTxt">Age:</string>
-    <string name="profileNewMembersTxt">New musicians in your area</string>
-    <string name="profileNewMessagesTxt">New messages</string>
-    <string name="profileLogoutBtnTxt">Logout</string>
-    <string name="profileLogoutBtn">Button to logout</string>
+    <string name="preferencesNewMembersTxt">New musicians in your area</string>
+    <string name="preferencesNewMessagesTxt">New messages</string>
+    <string name="preferencesAccountOptions">Account options:</string>
+    <string name="preferencesLogoutBtnTxt">Logout</string>
+    <string name="preferencesLogoutBtn">Button to logout</string>
 
     <!--- PROFILE SCREEN -->
 
