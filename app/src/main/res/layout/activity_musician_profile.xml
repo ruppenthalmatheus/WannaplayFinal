@@ -10,15 +10,6 @@
 
     <!-- View Title -->
 
-    <ImageView
-        android:id="@+id/profileTitleBgImg"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageButton
         android:id="@+id/musicianBackBtn"
         android:layout_width="0dp"
@@ -36,9 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:contentDescription="@string/MusicianTitle"
         android:fontFamily="sans-serif-light"
         android:text="@string/MusicianTitle"
@@ -46,9 +36,8 @@
         android:textAllCaps="true"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="#2F80ED"
-        app:layout_constraintBottom_toBottomOf="@+id/profileTitleBgImg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/profileTitleBgImg"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/MusicianTitle" />
 
@@ -56,8 +45,12 @@
         android:id="@+id/profileConstraintHeader"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:background="@drawable/profile_header_background"
-        app:layout_constraintTop_toBottomOf="@+id/profileTitleBgImg">
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/musicianTitleTxt">
 
         <!-- PROFILE PIC -->
 
@@ -153,6 +146,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="15dp"
             android:button="@drawable/singer_icon"
+            android:clickable="false"
             android:contentDescription="@string/profileSingerBtn"
             app:layout_constraintEnd_toStartOf="@+id/profileGuitarCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
@@ -166,6 +160,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:button="@drawable/guitar_icon"
+            android:clickable="false"
             android:contentDescription="@string/profileGuitarBtn"
             app:layout_constraintEnd_toStartOf="@+id/profileBassCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
@@ -179,6 +174,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:button="@drawable/bass_icon"
+            android:clickable="false"
             android:contentDescription="@string/profileBassBtn"
             app:layout_constraintEnd_toStartOf="@+id/profileDrumCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
@@ -192,6 +188,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:button="@drawable/drum_icon"
+            android:clickable="false"
             android:contentDescription="@string/profileDrumBtn"
             app:layout_constraintEnd_toStartOf="@+id/profileOtherCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
@@ -205,6 +202,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="30dp"
             android:button="@drawable/other_icon"
+            android:clickable="false"
             android:contentDescription="@string/profileOtherBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

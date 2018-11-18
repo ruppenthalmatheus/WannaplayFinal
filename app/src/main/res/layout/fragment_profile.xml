@@ -1,66 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor">
 
-    <!-- View Title -->
-
-    <ImageView
-        android:id="@+id/profileTitleBgImg"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/profileTitleTxt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="sans-serif-light"
-        android:text="@string/profileTitle"
-        android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textColor="#2F80ED"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- HEADER -->
-
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/profileConstraintHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="180dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileTitleBgImg">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/profileTitleTxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/profileTitle"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="#2F80ED"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- BACKGROUND PROFILE PIC -->
 
         <ImageView
             android:id="@+id/profileHeaderBackgroundImg"
-            android:layout_width="415dp"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorAccent"
             android:contentDescription="@string/profileHeaderBackground"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/profile_header_background" />
+            app:layout_constraintTop_toBottomOf="@+id/profileTitleTxt"
+            app:layout_constraintVertical_bias="1.0" />
 
         <!-- PROFILE PIC -->
 
@@ -103,36 +87,19 @@
             app:layout_constraintTop_toBottomOf="@+id/profilePhotoImg"
             tools:text="matheus" />
 
-    </android.support.constraint.ConstraintLayout>
+        <!-- HABILITIES -->
 
-    <!-- HABILITIES -->
-
-    <TextView
-        android:id="@+id/musicianAbilitiesLblTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="22dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/profileHabilitiesTxt"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileConstraintHeader" />
-
-    <!-- Abilities Options -->
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/profileHabilitiesConstraint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:baselineAligned="false"
-        android:gravity="center_vertical|center_horizontal"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musicianAbilitiesLblTxt">
+        <TextView
+            android:id="@+id/musicianAbilitiesLblTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/profileHabilitiesTxt"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileHeaderBackgroundImg" />
 
         <!-- Microphone Checkbox -->
         <CheckBox
@@ -140,12 +107,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="15dp"
             android:button="@drawable/singer_icon"
             android:contentDescription="@string/profileSingerBtn"
             app:layout_constraintEnd_toStartOf="@+id/profileGuitarCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/musicianAbilitiesLblTxt" />
 
         <!-- Guitar Checkbox -->
         <CheckBox
@@ -156,9 +125,11 @@
             android:layout_marginEnd="15dp"
             android:button="@drawable/guitar_icon"
             android:contentDescription="@string/profileGuitarBtn"
+            app:layout_constraintBottom_toBottomOf="@+id/profileVocalCheckbox"
             app:layout_constraintEnd_toStartOf="@+id/profileBassCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/profileVocalCheckbox" />
+            app:layout_constraintStart_toEndOf="@+id/profileVocalCheckbox"
+            app:layout_constraintTop_toTopOf="@+id/profileVocalCheckbox" />
 
         <!-- Bass Checkbox -->
         <CheckBox
@@ -169,9 +140,11 @@
             android:layout_marginEnd="15dp"
             android:button="@drawable/bass_icon"
             android:contentDescription="@string/profileBassBtn"
+            app:layout_constraintBottom_toBottomOf="@+id/profileGuitarCheckbox"
             app:layout_constraintEnd_toStartOf="@+id/profileDrumCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/profileGuitarCheckbox" />
+            app:layout_constraintStart_toEndOf="@+id/profileGuitarCheckbox"
+            app:layout_constraintTop_toTopOf="@+id/profileGuitarCheckbox" />
 
         <!-- Drum Checkbox -->
         <CheckBox
@@ -182,9 +155,11 @@
             android:layout_marginEnd="15dp"
             android:button="@drawable/drum_icon"
             android:contentDescription="@string/profileDrumBtn"
+            app:layout_constraintBottom_toBottomOf="@+id/profileBassCheckbox"
             app:layout_constraintEnd_toStartOf="@+id/profileOtherCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/profileBassCheckbox" />
+            app:layout_constraintStart_toEndOf="@+id/profileBassCheckbox"
+            app:layout_constraintTop_toTopOf="@+id/profileBassCheckbox" />
 
         <!-- Others Checkbox -->
         <CheckBox
@@ -195,143 +170,28 @@
             android:layout_marginEnd="30dp"
             android:button="@drawable/other_icon"
             android:contentDescription="@string/profileOtherBtn"
+            app:layout_constraintBottom_toBottomOf="@+id/profileDrumCheckbox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/profileDrumCheckbox" />
+            app:layout_constraintStart_toEndOf="@+id/profileDrumCheckbox"
+            app:layout_constraintTop_toTopOf="@+id/profileDrumCheckbox" />
+
+        <!-- DIVIDER ABOUT ME-->
+
+        <ImageView
+            android:id="@+id/profileDivider1"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/divider"
+            android:contentDescription="@string/profileDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileBassCheckbox" />
 
     </android.support.constraint.ConstraintLayout>
 
-    <!-- DIVIDER ABOUT ME-->
 
-    <ImageView
-        android:id="@+id/profileDivider1"
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/divider"
-        android:contentDescription="@string/profileDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileHabilitiesConstraint" />
-
-    <!-- DIVIDER ACCOUNTS -->
-
-    <ImageView
-        android:id="@+id/profileDivider2"
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/divider"
-        android:contentDescription="@string/profileDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileMaxCharactersTxt" />
-
-    <!-- ABOUT ME -->
-
-    <TextView
-        android:id="@+id/profileAboutLabelTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/profileAboutLabelTxt"
-        android:text="@string/profileAboutLabelTxt"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileDivider1" />
-
-    <!-- DESCRIPTION FIELD -->
-
-    <EditText
-        android:id="@+id/profileAboutTxt"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/colorAccent"
-        android:fontFamily="sans-serif-light"
-        android:gravity="top|start"
-        android:hint="@string/profileAboutTxt"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:maxLength="200"
-        android:textColor="@android:color/white"
-        android:textColorHint="@color/DisabledColor"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileAboutLabelTxt" />
-
-    <!-- LINKED ACCOUNTS -->
-
-    <TextView
-        android:id="@+id/profileLinkedAccountsLabelTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/profileLinkedAccountsLabelTxt"
-        android:text="@string/profileLinkedAccountsLabelTxt"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileDivider2" />
-
-    <!-- SPOTIFY LINK -->
-
-    <ImageView
-        android:id="@+id/profileSpotifyImg"
-        android:layout_width="24dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/profileSpotifyImg"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileLinkedAccountsLabelTxt"
-        app:srcCompat="@drawable/ic_spotify" />
-
-    <TextView
-        android:id="@+id/profileSpotifyTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:contentDescription="@string/profileSpotifyTxt"
-        android:fontFamily="sans-serif-light"
-        android:text="@string/profileSpotifyTxt"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/profileSpotifyImg"
-        app:layout_constraintStart_toEndOf="@+id/profileSpotifyImg"
-        app:layout_constraintTop_toTopOf="@+id/profileSpotifyImg" />
-
-    <Switch
-        android:id="@+id/profileSpotifySwitch"
-        style="@style/SwitchCompatStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/profileSpotifySwitch"
-        app:layout_constraintBottom_toBottomOf="@+id/profileSpotifyTxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/profileSpotifyTxt" />
-
-    <!-- MAX CHARACTERS LABEL -->
-
-    <TextView
-        android:id="@+id/profileMaxCharactersTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="sans-serif-light"
-        android:text="@string/profileMaxCharactersLabel"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileAboutTxt" />
-
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

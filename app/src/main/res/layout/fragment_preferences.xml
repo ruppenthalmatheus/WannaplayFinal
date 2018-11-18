@@ -7,12 +7,6 @@
     android:background="@color/backgroundColor"
     android:paddingTop="-5dp">
 
-    <ImageView
-        android:id="@+id/preferencesTitleBgImg"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/colorPrimary" />
-
     <!-- View Title -->
     <TextView
         android:id="@+id/preferencesTitleTxt"
@@ -45,7 +39,7 @@
         android:textColor="@color/textColor"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/preferencesTitleBgImg" />
+        app:layout_constraintTop_toBottomOf="@+id/preferencesTitleTxt" />
 
     <!-- Abilities Options -->
     <LinearLayout
