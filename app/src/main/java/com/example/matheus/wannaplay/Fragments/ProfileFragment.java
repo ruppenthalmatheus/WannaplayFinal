@@ -62,13 +62,13 @@ public class ProfileFragment extends Fragment {
         //Loading components
         mPhotoImg = profileView.findViewById(R.id.profilePhotoImg);
         mProfileName = profileView.findViewById(R.id.profileNameTxt);
-        //mProfileAbout = profileView.findViewById(R.id.profileAboutTxt);
+        mProfileAbout = profileView.findViewById(R.id.profileAboutTxt);
         mProfileVocalBtn = profileView.findViewById(R.id.profileVocalCheckbox);
         mProfileGuitarBtn = profileView.findViewById(R.id.profileGuitarCheckbox);
         mProfileBassBtn = profileView.findViewById(R.id.profileBassCheckbox);
         mProfileDrumsBtn = profileView.findViewById(R.id.profileDrumCheckbox);
         mProfileOthersBtn = profileView.findViewById(R.id.profileOtherCheckbox);
-        //mSpotifySwitch = profileView.findViewById(R.id.profileSpotifySwitch);
+        mSpotifySwitch = profileView.findViewById(R.id.profileSpotifySwitch);
 
         getProfileData();
 

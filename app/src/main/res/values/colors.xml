@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#000000</color>
-    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimary">#2c3033</color>
+    <color name="colorPrimaryDark">#202125</color>
     <color name="colorAccent">#2F80ED</color>
     <color name="colorAccentTransparency">#002f80ed</color>
-    <color name="backgroundColor">#0d0d0d</color>
+    <color name="backgroundColor">#202125</color>
     <color name="textColor">#E6E6E6</color>
     <color name="DisabledColor">#828282</color>
     <color name="DisabledSwitchThumbColor">#E0E0E0</color>
