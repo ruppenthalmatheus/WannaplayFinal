@@ -26,7 +26,6 @@ public class ChatsFragment extends Fragment {
     RecyclerView rvChats;
     TextView tvNoMessages;
     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    private Query chatsQuery;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
