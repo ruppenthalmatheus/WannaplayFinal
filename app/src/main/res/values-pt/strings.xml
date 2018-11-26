@@ -10,7 +10,7 @@
     <string name="registerHello">Olá</string>
     <string name="registerMessage1">Bem-vindo(a), seu perfil está quase pronto!</string>
     <string name="registerMessage2">Precisamos apenas de mais algumas informações.</string>
-    <string name="registerHabilities">Sua habilidade musical é:</string>
+    <string name="registerHabilities">Suas habilidades musicais são:</string>
     <string name="registerBirth">Você nasceu em:</string>
     <string name="registerBirthPicker">Clique para selecionar sua data de nascimento</string>
     <string name="registerBirthDescription">No Wannaplay você pode filtrar músicos pela idade.</string>
