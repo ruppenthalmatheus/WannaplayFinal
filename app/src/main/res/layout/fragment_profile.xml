@@ -90,7 +90,7 @@
         <!-- HABILITIES -->
 
         <TextView
-            android:id="@+id/musicianAbilitiesLblTxt"
+            android:id="@+id/profileAbilitiesLblTxt"
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:layout_marginStart="16dp"
@@ -114,7 +114,7 @@
             app:layout_constraintEnd_toStartOf="@+id/profileGuitarCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/musicianAbilitiesLblTxt" />
+            app:layout_constraintTop_toBottomOf="@+id/profileAbilitiesLblTxt" />
 
         <!-- Guitar Checkbox -->
         <CheckBox
@@ -190,6 +190,57 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileBassCheckbox" />
+
+        <!-- ABOUT ME -->
+
+        <TextView
+            android:id="@+id/profileAboutLabelTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/profileAboutLabelTxt"
+            android:text="@string/profileAboutLabelTxt"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileDivider1" />
+
+        <!-- DESCRIPTION FIELD -->
+
+        <EditText
+            android:id="@+id/profileAboutTxt"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/colorAccent"
+            android:fontFamily="sans-serif-light"
+            android:gravity="top|start"
+            android:hint="@string/profileAboutTxt"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine"
+            android:maxLength="200"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/DisabledColor"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileAboutLabelTxt" />
+
+        <!-- MAX CHARACTERS LABEL -->
+
+        <TextView
+            android:id="@+id/profileMaxCharactersTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/profileMaxCharactersLabel"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileAboutTxt" />
+
 
     </android.support.constraint.ConstraintLayout>
 

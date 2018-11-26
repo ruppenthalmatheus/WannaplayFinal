@@ -93,6 +93,13 @@
     <string name="profileMaxCharactersLabel">Max: 200</string>
     <string name="profileMaxCharacters">200 character maximum text</string>
 
+    <!--- MESSAGES SCREEN -->
+    <string name="messagesNoMessages">You have no messages!</string>
+
+    <!--- CHAT SCREEN -->
+    <string name="chatTypeMessage">Enter your message...</string>
+    <string name="chatSendBtn">Send</string>
+
     <!--- MUSICIAN PROFILE SCREEN -->
 
     <string name="musicianHeaderBackground">Musician profile header with a background image</string>
@@ -101,9 +108,8 @@
     <string name="musicianHeaderNameTxt">Name of the musician</string>
     <string name="musicianAbilitiesTxt">Musical skills: </string>
     <string name="musicianMessageBtn">Send message</string>
-    <string name="musicianAboutLabelTxt">About the musician</string>
+    <string name="musicianAboutLabelTxt">About:</string>
     <string name="musicianAboutTxt">A short description about the musician</string>
-    <string name="musicianSpotifyBands">Bands liked on Spotify:</string>
 
     <!--- FACEBOOK ID's -->
 
@@ -111,4 +117,5 @@
     <string name="fb_login_protocol_scheme" translatable="false">fb2205070229714402</string>
     <string name="notifications_preferences">Notifications:</string>
     <string name="profileDivider">Dividing line</string>
+
 </resources>

@@ -101,58 +101,58 @@ public class HomeFragment extends Fragment {
 
     public String getMinAge() {
         SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
+        //SharedPreferences.Editor editor = preferences.edit();
 
         return String.valueOf(preferences.getInt("minAge", 0));
     }
 
     public String getMaxAge() {
         SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
+        //SharedPreferences.Editor editor = preferences.edit();
 
         return String.valueOf(preferences.getInt("maxAge", 60));
     }
 
     public String getMaxDistance() {
         SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
+        //SharedPreferences.Editor editor = preferences.edit();
 
         return String.valueOf(preferences.getInt("distance", 200));
     }
 
     public Boolean getVocalBtnState() {
         SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
+        //SharedPreferences.Editor editor = preferences.edit();
 
-        return preferences.getBoolean("vocal", false);
+        return preferences.getBoolean("vocal", true);
     }
 
     public Boolean getGuitarBtnState() {
         SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
+        //SharedPreferences.Editor editor = preferences.edit();
 
-        return preferences.getBoolean("guitar", false);
+        return preferences.getBoolean("guitar", true);
     }
 
     public Boolean getBassBtnState() {
         SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
+        //SharedPreferences.Editor editor = preferences.edit();
 
-        return preferences.getBoolean("bass", false);
+        return preferences.getBoolean("bass", true);
     }
 
     public Boolean getDrumsBtnState() {
         SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
+        //SharedPreferences.Editor editor = preferences.edit();
 
-        return preferences.getBoolean("drums", false);
+        return preferences.getBoolean("drums", true);
     }
 
     public Boolean getOthersBtnState() {
         SharedPreferences preferences = getContext().getSharedPreferences("preferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
+        //SharedPreferences.Editor editor = preferences.edit();
 
-        return preferences.getBoolean("others", false);
+        return preferences.getBoolean("others", true);
     }
 
     @Override

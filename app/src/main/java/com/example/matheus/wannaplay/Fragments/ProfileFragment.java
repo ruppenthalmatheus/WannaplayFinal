@@ -1,7 +1,6 @@
 package com.example.matheus.wannaplay.Fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,19 +10,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.matheus.wannaplay.Activities.LoginActivity;
-import com.example.matheus.wannaplay.Activities.MainActivity;
 import com.example.matheus.wannaplay.R;
 import com.example.matheus.wannaplay.Utilities.Tags;
-import com.facebook.login.Login;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,7 +29,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -50,7 +42,6 @@ public class ProfileFragment extends Fragment {
     private CheckBox mProfileVocalBtn, mProfileGuitarBtn, mProfileBassBtn, mProfileDrumsBtn, mProfileOthersBtn;
     private EditText mProfileAbout;
     private TextView mProfileName;
-    private Switch mSpotifySwitch;
 
     @Nullable
     @Override
@@ -62,13 +53,12 @@ public class ProfileFragment extends Fragment {
         //Loading components
         mPhotoImg = profileView.findViewById(R.id.profilePhotoImg);
         mProfileName = profileView.findViewById(R.id.profileNameTxt);
-        //mProfileAbout = profileView.findViewById(R.id.profileAboutTxt);
+        mProfileAbout = profileView.findViewById(R.id.profileAboutTxt);
         mProfileVocalBtn = profileView.findViewById(R.id.profileVocalCheckbox);
         mProfileGuitarBtn = profileView.findViewById(R.id.profileGuitarCheckbox);
         mProfileBassBtn = profileView.findViewById(R.id.profileBassCheckbox);
         mProfileDrumsBtn = profileView.findViewById(R.id.profileDrumCheckbox);
         mProfileOthersBtn = profileView.findViewById(R.id.profileOtherCheckbox);
-        //mSpotifySwitch = profileView.findViewById(R.id.profileSpotifySwitch);
 
         getProfileData();
 
@@ -149,7 +139,7 @@ public class ProfileFragment extends Fragment {
         final String userKey = firebaseAuth.getCurrentUser().getUid();
 
         Map<String, Object> musician = new HashMap<>();
-        musician.put(t.getKEY_ABOUT(), mProfileAbout.getText());
+       musician.put(t.getKEY_ABOUT(), mProfileAbout.getText());
         DocumentReference userProfileRef = firebaseFirestore.collection(t.getKEY_MUSICIANS()).document(userKey);
         userProfileRef.update(t.getKEY_ABOUT(), mProfileAbout.getText().toString())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

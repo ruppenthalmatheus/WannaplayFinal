@@ -140,7 +140,7 @@
 
         <!-- Microphone Checkbox -->
         <CheckBox
-            android:id="@+id/profileVocalCheckbox"
+            android:id="@+id/musicianVocalCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -148,13 +148,13 @@
             android:button="@drawable/singer_icon"
             android:clickable="false"
             android:contentDescription="@string/profileSingerBtn"
-            app:layout_constraintEnd_toStartOf="@+id/profileGuitarCheckbox"
+            app:layout_constraintEnd_toStartOf="@+id/musicianGuitarCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
         <!-- Guitar Checkbox -->
         <CheckBox
-            android:id="@+id/profileGuitarCheckbox"
+            android:id="@+id/musicianGuitarCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -162,13 +162,13 @@
             android:button="@drawable/guitar_icon"
             android:clickable="false"
             android:contentDescription="@string/profileGuitarBtn"
-            app:layout_constraintEnd_toStartOf="@+id/profileBassCheckbox"
+            app:layout_constraintEnd_toStartOf="@+id/musicianBassCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/profileVocalCheckbox" />
+            app:layout_constraintStart_toEndOf="@+id/musicianVocalCheckbox" />
 
         <!-- Bass Checkbox -->
         <CheckBox
-            android:id="@+id/profileBassCheckbox"
+            android:id="@+id/musicianBassCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -176,13 +176,13 @@
             android:button="@drawable/bass_icon"
             android:clickable="false"
             android:contentDescription="@string/profileBassBtn"
-            app:layout_constraintEnd_toStartOf="@+id/profileDrumCheckbox"
+            app:layout_constraintEnd_toStartOf="@+id/musicianDrumCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/profileGuitarCheckbox" />
+            app:layout_constraintStart_toEndOf="@+id/musicianGuitarCheckbox" />
 
         <!-- Drum Checkbox -->
         <CheckBox
-            android:id="@+id/profileDrumCheckbox"
+            android:id="@+id/musicianDrumCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -190,13 +190,13 @@
             android:button="@drawable/drum_icon"
             android:clickable="false"
             android:contentDescription="@string/profileDrumBtn"
-            app:layout_constraintEnd_toStartOf="@+id/profileOtherCheckbox"
+            app:layout_constraintEnd_toStartOf="@+id/musicianOtherCheckbox"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/profileBassCheckbox" />
+            app:layout_constraintStart_toEndOf="@+id/musicianBassCheckbox" />
 
         <!-- Others Checkbox -->
         <CheckBox
-            android:id="@+id/profileOtherCheckbox"
+            android:id="@+id/musicianOtherCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -206,7 +206,7 @@
             android:contentDescription="@string/profileOtherBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/profileDrumCheckbox" />
+            app:layout_constraintStart_toEndOf="@+id/musicianDrumCheckbox" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -233,12 +233,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/musicianAboutLabelTxt"
-        android:text="TextView"
+        android:text="@string/musicianAboutLabelTxt"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileDivider1"
-        tools:text="About the musician:" />
+        app:layout_constraintTop_toBottomOf="@+id/profileDivider1" />
 
     <TextView
         android:id="@+id/musicianAboutTxt"
@@ -248,35 +247,14 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:allowUndo="false"
-        android:backgroundTint="@color/colorAccent"
         android:contentDescription="@string/musicianAboutTxt"
         android:fontFamily="sans-serif-light"
         android:gravity="top|start"
         android:lines="5"
-        android:text="My little description "
         android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/musicianAboutLabelTxt" />
-
-    <!-- DIVIDER
-
-    <ImageView
-        android:id="@+id/musicianDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/divider"
-        android:contentDescription="@string/profileDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musicianAboutTxt" />  -->
-
 
 </android.support.constraint.ConstraintLayout>

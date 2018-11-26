@@ -53,8 +53,7 @@
     <string name="musicianHeaderNameTxt">Nome do músico</string>
     <string name="musicianMessageBtn">Enviar mensagem</string>
     <string name="musicianAboutTxt">Uma breve descrição sobre o músico</string>
-    <string name="musicianSpotifyBands">Bandas curtidas no Spotify:</string>
-    <string name="musicianAboutLabelTxt">Sobre o músico</string>
+    <string name="musicianAboutLabelTxt">Sobre:</string>
     <string name="registerRequiredBirthMessage">Informe sua data de nascimento.</string>
     <string name="dialogTitle">Permissão necessária</string>
     <string name="dialogGrant">Conceder</string>
@@ -76,4 +75,7 @@
     <string name="preferencesLogoutBtn">Botão para deslogar</string>
     <string name="preferencesAccountOptions">"Opções "</string>
     <string name="registerRequiredAbilitieshMessage">Por favor selecione pelo menos uma habilidade para continuar!</string>
+    <string name="messagesNoMessages">Você ainda não tem mensagens!</string>
+    <string name="chatTypeMessage">Escreva sua mensagem...</string>
+    <string name="chatSendBtn">Enviar</string>
 </resources>

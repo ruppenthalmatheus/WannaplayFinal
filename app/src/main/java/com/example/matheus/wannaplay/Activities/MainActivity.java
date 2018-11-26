@@ -1,6 +1,5 @@
 package com.example.matheus.wannaplay.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.example.matheus.wannaplay.Fragments.HomeFragment;
-import com.example.matheus.wannaplay.Fragments.MessagesFragment;
+import com.example.matheus.wannaplay.Fragments.ChatsFragment;
 import com.example.matheus.wannaplay.Fragments.PreferencesFragment;
 import com.example.matheus.wannaplay.Fragments.ProfileFragment;
 import com.example.matheus.wannaplay.R;
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 break;
 
             case R.id.navigation_messages:
-                fragment = new MessagesFragment();
+                fragment = new ChatsFragment();
                 break;
 
             case R.id.navigation_profile:

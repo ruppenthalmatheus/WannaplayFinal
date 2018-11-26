@@ -54,6 +54,8 @@
         <activity
             android:name=".Activities.MusicianProfileActivity"
             android:theme="@style/AppTheme_NoActionBar" />
+        <activity android:name=".Activities.ChatActivity"
+            android:theme="@style/AppTheme_NoActionBar"/>
     </application>
 
 </manifest>
