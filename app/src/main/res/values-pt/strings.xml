@@ -78,4 +78,5 @@
     <string name="messagesNoMessages">Você ainda não tem mensagens!</string>
     <string name="chatTypeMessage">Escreva sua mensagem...</string>
     <string name="chatSendBtn">Enviar</string>
+    <string name="messagesEmptyImg">Uma caixa de mensagens vazia</string>
 </resources>

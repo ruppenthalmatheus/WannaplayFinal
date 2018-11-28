@@ -49,7 +49,7 @@ public class ChatActivity extends AppCompatActivity {
     DocumentReference userReference;
     DocumentReference chatReference;
     CollectionReference messagesCollection;
-    private Tags tags = new Tags();
+    private Tags t = new Tags();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class ChatActivity extends AppCompatActivity {
         profileImage = findViewById(R.id.chatProfileImg);
         profileName = findViewById(R.id.chatProfileNameTxt);
         btnBack = findViewById(R.id.chatBackBtn);
-        userReference = FirebaseFirestore.getInstance().collection(tags.getKEY_MUSICIANS()).document(userId);
+        userReference = FirebaseFirestore.getInstance().collection(t.getKEY_MUSICIANS()).document(userId);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,20 +78,20 @@ public class ChatActivity extends AppCompatActivity {
 
         FirebaseFirestore
                 .getInstance()
-                .collection(tags.getKEY_MUSICIANS())
+                .collection(t.getKEY_MUSICIANS())
                 .document(toUserId).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        Glide.with(ChatActivity.this).load(documentSnapshot.getString(tags.getKEY_PHOTO())).into(profileImage);
-                        profileName.setText(documentSnapshot.getString(tags.getKEY_NAME()));
+                        Glide.with(ChatActivity.this).load(documentSnapshot.getString(t.getKEY_PHOTO())).into(profileImage);
+                        profileName.setText(documentSnapshot.getString(t.getKEY_NAME()));
                     }
                 });
 
         if (getIntent().hasExtra(CHAT_ID_KEY)){
             chatId = getIntent().getStringExtra(CHAT_ID_KEY);
-            chatReference = FirebaseFirestore.getInstance().collection("chats").document(chatId);
-            messagesCollection = chatReference.collection("messages");
+            chatReference = FirebaseFirestore.getInstance().collection(t.getKEY_CHAT()).document(chatId);
+            messagesCollection = chatReference.collection(t.getKEY_MESSAGES());
             setupRecyclerView();
         } else{
             findChatIdForUser(new Consumer<DocumentReference>() {
@@ -99,7 +99,7 @@ public class ChatActivity extends AppCompatActivity {
                 public void accept(DocumentReference documentReference) {
                     if (documentReference != null) {
                         chatReference = documentReference;
-                        messagesCollection = chatReference.collection("messages");
+                        messagesCollection = chatReference.collection(t.getKEY_MESSAGES());
                         setupRecyclerView();
                     }
                 }
@@ -128,9 +128,9 @@ public class ChatActivity extends AppCompatActivity {
 
     private void findChatIdForUser(final Consumer<DocumentReference> documentReferenceConsumer){
         FirebaseFirestore.getInstance()
-                .collection("chats")
-                .whereEqualTo("user1Id",userId)
-                .whereEqualTo("user2Id",toUserId).get()
+                .collection(t.getKEY_CHAT())
+                .whereEqualTo(t.getKEY_USER1_ID(),userId)
+                .whereEqualTo(t.getKEY_USER2_ID(),toUserId).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -138,9 +138,9 @@ public class ChatActivity extends AppCompatActivity {
                             documentReferenceConsumer.accept(queryDocumentSnapshots.getDocuments().get(0).getReference());
                         else {
                             FirebaseFirestore.getInstance()
-                                    .collection("chats")
-                                    .whereEqualTo("user2Id",userId)
-                                    .whereEqualTo("user1Id",toUserId).get()
+                                    .collection(t.getKEY_CHAT())
+                                    .whereEqualTo(t.getKEY_USER1_ID(),userId)
+                                    .whereEqualTo(t.getKEY_USER2_ID(),toUserId).get()
                                     .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                                         @Override
                                         public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -168,7 +168,7 @@ public class ChatActivity extends AppCompatActivity {
 
         if (chatReference == null) {
             if (chatId == null) {
-                chatReference = FirebaseFirestore.getInstance().collection("chats").document();
+                chatReference = FirebaseFirestore.getInstance().collection(t.getKEY_CHAT()).document();
                 chatReference.set(new Chat(
                         userId,
                         toUserId,
@@ -177,13 +177,13 @@ public class ChatActivity extends AppCompatActivity {
                 );
                 chatId = chatReference.getId();
             } else {
-                chatReference = FirebaseFirestore.getInstance().collection("chats").document(chatId);
+                chatReference = FirebaseFirestore.getInstance().collection(t.getKEY_CHAT()).document(chatId);
             }
-            messagesCollection = chatReference.collection("messages");
+            messagesCollection = chatReference.collection(t.getKEY_MESSAGES());
             setupRecyclerView();
         }
-        chatReference.update("lastMessageDate", message.getDate());
-        chatReference.update("lastMessage",message.getText());
+        chatReference.update(t.getKEY_LAST_MESSAGE_DATE(), message.getDate());
+        chatReference.update(t.getKEY_LAST_MESSAGE(),message.getText());
         messagesCollection.add(message);
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
@@ -196,6 +196,6 @@ public class ChatActivity extends AppCompatActivity {
 
 
     public Query getMessagesQuery() {
-        return messagesCollection.orderBy("date", Query.Direction.DESCENDING);
+        return messagesCollection.orderBy(t.getKEY_DATE(), Query.Direction.DESCENDING);
     }
 }

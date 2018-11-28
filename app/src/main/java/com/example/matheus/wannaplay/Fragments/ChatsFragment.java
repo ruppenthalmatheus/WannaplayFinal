@@ -9,11 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.matheus.wannaplay.Adapters.ChatAdapter;
 import com.example.matheus.wannaplay.Models.Chat;
 import com.example.matheus.wannaplay.R;
+import com.example.matheus.wannaplay.Utilities.Tags;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.EventListener;
@@ -23,9 +25,11 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class ChatsFragment extends Fragment {
-    RecyclerView rvChats;
-    TextView tvNoMessages;
+    RecyclerView recyclerViewMessages;
+    TextView messagesNoMessagesTxt;
+    ImageView messagesEmptyImg;
     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    Tags t = new Tags();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,8 +40,9 @@ public class ChatsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_messages, container, false);
-        rvChats = view.findViewById(R.id.messagesRecyclerView);
-        tvNoMessages = view.findViewById(R.id.messagesNoMessagesTxt);
+        recyclerViewMessages = view.findViewById(R.id.messagesRecyclerView);
+        messagesNoMessagesTxt = view.findViewById(R.id.messagesNoMessagesTxt);
+        messagesEmptyImg = view.findViewById(R.id.messagesEmptyImg);
         return view;
     }
 
@@ -51,9 +56,9 @@ public class ChatsFragment extends Fragment {
     }
 
     public void setChatsQuery() {
-        Query query = FirebaseFirestore.getInstance().collection("chats")
-                .whereArrayContains("users",userId)
-                .orderBy("lastMessageDate", Query.Direction.DESCENDING);
+        Query query = FirebaseFirestore.getInstance().collection(t.getKEY_CHAT())
+                .whereArrayContains(t.getKEY_USERS(),userId)
+                .orderBy(t.getKEY_LAST_MESSAGE_DATE(), Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<Chat> options = new FirestoreRecyclerOptions.Builder<Chat>()
                 .setLifecycleOwner(this)
@@ -64,17 +69,19 @@ public class ChatsFragment extends Fragment {
             @Override
             public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
                 if (queryDocumentSnapshots != null  && queryDocumentSnapshots.isEmpty()){
-                    tvNoMessages.setVisibility(View.VISIBLE);
-                    rvChats.setVisibility(View.INVISIBLE);
+                    messagesNoMessagesTxt.setVisibility(View.VISIBLE);
+                    recyclerViewMessages.setVisibility(View.INVISIBLE);
+                    messagesEmptyImg.setVisibility(View.VISIBLE);
                 } else {
-                    tvNoMessages.setVisibility(View.INVISIBLE);
-                    rvChats.setVisibility(View.VISIBLE);
+                    messagesNoMessagesTxt.setVisibility(View.INVISIBLE);
+                    recyclerViewMessages.setVisibility(View.VISIBLE);
+                    messagesEmptyImg.setVisibility(View.INVISIBLE);
                 }
             }
         });
 
         ChatAdapter chatAdapter = new ChatAdapter(options);
-        rvChats.setAdapter(chatAdapter);
-        rvChats.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        recyclerViewMessages.setAdapter(chatAdapter);
+        recyclerViewMessages.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
     }
 }

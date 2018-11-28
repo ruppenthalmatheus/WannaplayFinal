@@ -95,6 +95,7 @@
 
     <!--- MESSAGES SCREEN -->
     <string name="messagesNoMessages">You have no messages!</string>
+    <string name="messagesEmptyImg">An empty mailbox</string>
 
     <!--- CHAT SCREEN -->
     <string name="chatTypeMessage">Enter your message...</string>

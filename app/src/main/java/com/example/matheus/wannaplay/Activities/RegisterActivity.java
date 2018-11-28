@@ -30,7 +30,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.StorageReference;
 
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
@@ -170,7 +169,7 @@ public class RegisterActivity extends AppCompatActivity implements GoogleApiClie
         musician.put(t.getKEY_AGE(), mMusicianAge);
         musician.put(t.getKEY_LATITUDE(), mMusicianLatitude);
         musician.put(t.getKEY_LONGITUDE(), mMusicianLongitude);
-        musician.put(t.getKEY_DATE(), joined);
+        musician.put(t.getKEY_JOINED(), joined);
 
         firebaseFirestore.collection(t.getKEY_MUSICIANS()).document(userKey)
                 .set(musician)

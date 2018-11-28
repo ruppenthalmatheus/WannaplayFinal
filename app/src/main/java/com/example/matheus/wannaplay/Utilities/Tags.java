@@ -11,7 +11,21 @@ public class Tags {
     private String KEY_ABOUT = "about";
     private String KEY_LATITUDE = "latitude";
     private String KEY_LONGITUDE = "longitude";
-    private String KEY_DATE = "joined";
+    private String KEY_JOINED = "joined";
+
+    /* MESSAGE TAGS */
+
+    private String KEY_DATE = "date";
+    private String KEY_TEXT = "text";
+    private String KEY_USER1_ID = "user1Id";
+    private String KEY_USER2_ID = "user2Id";
+    private String KEY_USERS = "users";
+
+    /* CHAT TAGS */
+
+    private String KEY_LAST_MESSAGE = "lastMessage";
+    private String KEY_LAST_MESSAGE_DATE = "lastMessageDate";
+    private String KEY_WRITER_USER_ID = "writerUserId";
 
     /* SKILLS TAGS */
 
@@ -25,14 +39,55 @@ public class Tags {
 
     private String KEY_MUSICIANS = "musicians";
     private String KEY_SKILLS = "skills";
+    private String KEY_CHAT = "chats";
+    private String KEY_MESSAGES = "messages";
 
+    public String getKEY_DATE() {
+        return KEY_DATE;
+    }
+
+    public String getKEY_TEXT() {
+        return KEY_TEXT;
+    }
+
+    public String getKEY_USER1_ID() {
+        return KEY_USER1_ID;
+    }
+
+    public String getKEY_USER2_ID() {
+        return KEY_USER2_ID;
+    }
+
+    public String getKEY_USERS() {
+        return KEY_USERS;
+    }
+
+    public String getKEY_LAST_MESSAGE() {
+        return KEY_LAST_MESSAGE;
+    }
+
+    public String getKEY_LAST_MESSAGE_DATE() {
+        return KEY_LAST_MESSAGE_DATE;
+    }
+
+    public String getKEY_WRITER_USER_ID() {
+        return KEY_WRITER_USER_ID;
+    }
+
+    public String getKEY_CHAT() {
+        return KEY_CHAT;
+    }
+
+    public String getKEY_MESSAGES() {
+        return KEY_MESSAGES;
+    }
 
     public String getKEY_NAME() {
         return KEY_NAME;
     }
 
-    public String getKEY_DATE() {
-        return KEY_DATE;
+    public String getKEY_JOINED() {
+        return KEY_JOINED;
     }
 
     public String getKEY_ABOUT() {
