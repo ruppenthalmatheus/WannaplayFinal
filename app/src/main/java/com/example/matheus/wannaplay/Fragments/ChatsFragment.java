@@ -1,5 +1,6 @@
 package com.example.matheus.wannaplay.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.matheus.wannaplay.Adapters.ChatAdapter;
@@ -18,6 +18,7 @@ import com.example.matheus.wannaplay.R;
 import com.example.matheus.wannaplay.Utilities.Tags;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -25,11 +26,10 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class ChatsFragment extends Fragment {
-    RecyclerView recyclerViewMessages;
-    TextView messagesNoMessagesTxt;
-    ImageView messagesEmptyImg;
+    RecyclerView rvChats;
+    TextView tvNoMessages;
     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    Tags t = new Tags();
+    private Query chatsQuery;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,9 +40,8 @@ public class ChatsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_messages, container, false);
-        recyclerViewMessages = view.findViewById(R.id.messagesRecyclerView);
-        messagesNoMessagesTxt = view.findViewById(R.id.messagesNoMessagesTxt);
-        messagesEmptyImg = view.findViewById(R.id.messagesEmptyImg);
+        rvChats = view.findViewById(R.id.messagesRecyclerView);
+        tvNoMessages = view.findViewById(R.id.messagesNoMessagesTxt);
         return view;
     }
 
@@ -56,9 +55,9 @@ public class ChatsFragment extends Fragment {
     }
 
     public void setChatsQuery() {
-        Query query = FirebaseFirestore.getInstance().collection(t.getKEY_CHAT())
-                .whereArrayContains(t.getKEY_USERS(),userId)
-                .orderBy(t.getKEY_LAST_MESSAGE_DATE(), Query.Direction.DESCENDING);
+        Query query = FirebaseFirestore.getInstance().collection("chats")
+                .whereArrayContains("users",userId)
+                .orderBy("lastMessageDate", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<Chat> options = new FirestoreRecyclerOptions.Builder<Chat>()
                 .setLifecycleOwner(this)
@@ -69,19 +68,17 @@ public class ChatsFragment extends Fragment {
             @Override
             public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
                 if (queryDocumentSnapshots != null  && queryDocumentSnapshots.isEmpty()){
-                    messagesNoMessagesTxt.setVisibility(View.VISIBLE);
-                    recyclerViewMessages.setVisibility(View.INVISIBLE);
-                    messagesEmptyImg.setVisibility(View.VISIBLE);
+                    tvNoMessages.setVisibility(View.VISIBLE);
+                    rvChats.setVisibility(View.INVISIBLE);
                 } else {
-                    messagesNoMessagesTxt.setVisibility(View.INVISIBLE);
-                    recyclerViewMessages.setVisibility(View.VISIBLE);
-                    messagesEmptyImg.setVisibility(View.INVISIBLE);
+                    tvNoMessages.setVisibility(View.INVISIBLE);
+                    rvChats.setVisibility(View.VISIBLE);
                 }
             }
         });
 
         ChatAdapter chatAdapter = new ChatAdapter(options);
-        recyclerViewMessages.setAdapter(chatAdapter);
-        recyclerViewMessages.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        rvChats.setAdapter(chatAdapter);
+        rvChats.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
     }
 }

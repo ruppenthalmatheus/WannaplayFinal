@@ -25,7 +25,7 @@ public class Tags {
 
     private String KEY_LAST_MESSAGE = "lastMessage";
     private String KEY_LAST_MESSAGE_DATE = "lastMessageDate";
-    private String KEY_WRITER_USER_ID = "writerUserId";
+    private String KEY_WRITER_USER_ID = "lastMessage";
 
     /* SKILLS TAGS */
 

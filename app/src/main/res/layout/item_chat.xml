@@ -11,7 +11,7 @@
     android:background="#333">
 
     <ImageView
-        android:id="@+id/chatProfileImg"
+        android:id="@+id/ivProfileImg"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="0dp"
@@ -45,8 +45,8 @@
         android:textAllCaps="true"
         android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toStartOf="@id/tvTime"
-        app:layout_constraintStart_toEndOf="@id/chatProfileImg"
-        app:layout_constraintTop_toTopOf="@id/chatProfileImg"
+        app:layout_constraintStart_toEndOf="@id/ivProfileImg"
+        app:layout_constraintTop_toTopOf="@id/ivProfileImg"
         tools:text="NOME USUÁRIO" />
 
 
@@ -59,7 +59,7 @@
         android:lines="1"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/chatProfileImg"
+        app:layout_constraintStart_toEndOf="@id/ivProfileImg"
         app:layout_constraintTop_toBottomOf="@id/tvUsername"
         tools:text="Minha mensagem de exemplo" />
 

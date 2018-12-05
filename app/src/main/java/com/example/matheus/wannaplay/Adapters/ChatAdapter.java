@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.matheus.wannaplay.Activities.ChatActivity;
+import com.example.matheus.wannaplay.Activities.MusicianProfileActivity;
 import com.example.matheus.wannaplay.Models.Chat;
 import com.example.matheus.wannaplay.Models.Musician;
 import com.example.matheus.wannaplay.R;
@@ -86,7 +87,7 @@ public class ChatAdapter extends FirestoreRecyclerAdapter<Chat,ChatAdapter.ChatV
             tvUsername = itemView.findViewById(R.id.tvUsername);
             tvLastMessage = itemView.findViewById(R.id.tvLastMessage);
             tvTime = itemView.findViewById(R.id.tvTime);
-            ivProfileImg = itemView.findViewById(R.id.chatProfileImg);
+            ivProfileImg = itemView.findViewById(R.id.ivProfileImg);
         }
     }
 }
