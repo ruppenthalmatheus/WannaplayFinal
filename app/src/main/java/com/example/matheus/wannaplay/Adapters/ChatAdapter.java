@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.matheus.wannaplay.Activities.ChatActivity;
-import com.example.matheus.wannaplay.Activities.MusicianProfileActivity;
 import com.example.matheus.wannaplay.Models.Chat;
 import com.example.matheus.wannaplay.Models.Musician;
 import com.example.matheus.wannaplay.R;
@@ -72,7 +71,7 @@ public class ChatAdapter extends FirestoreRecyclerAdapter<Chat,ChatAdapter.ChatV
     @NonNull
     @Override
     public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_messages, parent,false);
         return new ChatViewHolder(view);
     }
 
@@ -84,10 +83,10 @@ public class ChatAdapter extends FirestoreRecyclerAdapter<Chat,ChatAdapter.ChatV
 
         public ChatViewHolder(View itemView) {
             super(itemView);
-            tvUsername = itemView.findViewById(R.id.tvUsername);
-            tvLastMessage = itemView.findViewById(R.id.tvLastMessage);
-            tvTime = itemView.findViewById(R.id.tvTime);
-            ivProfileImg = itemView.findViewById(R.id.ivProfileImg);
+            tvUsername = itemView.findViewById(R.id.messagesUsernameTxt);
+            tvLastMessage = itemView.findViewById(R.id.messagesLastMessageTxt);
+            tvTime = itemView.findViewById(R.id.messagesTimeTxt);
+            ivProfileImg = itemView.findViewById(R.id.messagesProfileImg);
         }
     }
 }

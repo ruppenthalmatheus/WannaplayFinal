@@ -70,7 +70,7 @@ public class MessageAdapter extends FirestoreRecyclerAdapter<Message,MessageAdap
     @NonNull
     @Override
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message, parent, false);
+        View view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat, parent, false);
         return new MessageViewHolder(view);
     }
 
@@ -81,8 +81,8 @@ public class MessageAdapter extends FirestoreRecyclerAdapter<Message,MessageAdap
         public MessageViewHolder(View itemView) {
             super(itemView);
             rootMessage = itemView.findViewById(R.id.rootMessage);
-            tvMessage = itemView.findViewById(R.id.tvMessage);
-            tvTime = itemView.findViewById(R.id.tvTime);
+            tvMessage = itemView.findViewById(R.id.chatMessageTxt);
+            tvTime = itemView.findViewById(R.id.messagesTimeTxt);
         }
     }
 
